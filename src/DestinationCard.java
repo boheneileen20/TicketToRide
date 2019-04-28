@@ -10,9 +10,9 @@ public class DestinationCard
     //the value on the card
     private int num;
     //one destination on the card
-    private String dest1;
+    private Location dest1;
     //the other destination on the card
-    private String dest2;
+    private Location dest2;
     //the picture of the card
     private Image picture;
     
@@ -22,7 +22,7 @@ public class DestinationCard
      * @param num, the value on the card. dest1, the first destination. dest2, the second destination. picture, 
      * the image of the card.
      */
-    public DestinationCard(int num, String dest1, String dest2, Image picture){
+    public DestinationCard(int num, Location dest1, Location dest2, Image picture){
         this.num = num;
         this.dest1 = dest1;
         this.dest2 = dest2;
@@ -43,7 +43,7 @@ public class DestinationCard
      * 
      * @return the first destination
      */
-    public String getDest1(){
+    public Location getDest1(){
         return dest1;
     }
     
@@ -52,7 +52,7 @@ public class DestinationCard
      * 
      * @return the second destination
      */
-    public String getDest2(){
+    public Location getDest2(){
         return dest2;
     }
     
