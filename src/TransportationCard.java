@@ -13,9 +13,10 @@ public class TransportationCard
     private Image picture;
     
     /**
-     * Constructor for TransportationCard objects. Initializes instance variables.
+     * Initializes color and picture.
      * 
-     * @param color, the color of the card. picture, the Image of the card.
+     * @param color The color of the card.
+     * @param picture The image of the card.
      */
     public TransportationCard(String color, Image picture){
         this.color = color;
@@ -23,22 +24,20 @@ public class TransportationCard
     }
     
     /**
-     * Returns the color of the card
+     * Returns the color of the card.
      * 
-     * @return String representing the color of the card
+     * @return String representing the color of the card.
      */
     public String getColor(){
         return color;
     }
     
     /**
-     * Returns the picture of the card
+     * Returns the picture of the card.
      * 
-     * @return Image that is the picture of the card
+     * @return Image that is the picture of the card.
      */
     public Image getPicture(){
         return picture;
     }
-
-
 }
