@@ -116,6 +116,7 @@ public class GUITest extends JPanel implements MouseListener {
         //loop until valid age is given
         for (int i = 1; i <= numPlayers; i++) {
             String name = JOptionPane.showInputDialog("Enter player " + i + "'s name.");
+            name = name.trim();
             while (!validAge) {
                 //if age is invalid, retry and reset the boolean to false
                 try {
@@ -153,6 +154,7 @@ public class GUITest extends JPanel implements MouseListener {
                 playerChoice = JOptionPane.showInputDialog(p.getName() + ", you have drawn these cards: " + choices.get(0).toString() + " and " +
                     choices.get(1) + " \n" +
                     "Enter \"both\" to take both, \"1\" for the first card, and \"2\" for the second");
+                playerChoice = playerChoice.trim();
                 //if user entered valid choice, move on, otherwise, repeat
                 if (playerChoice.equals("both") || playerChoice.equals("1") || playerChoice.equals("2")) {
                     validChoice = true;
@@ -250,11 +252,15 @@ public class GUITest extends JPanel implements MouseListener {
                 turnChoice = Integer.parseInt(JOptionPane.showInputDialog(frame, "enter 1 to draw trans cards, 2 for dest, 3 to claim route"));
                 if (turnChoice >= 1 && turnChoice <= 3) {
                     validChoice = true;
-                } else {
+                }
+                else {
                     JOptionPane error = new JOptionPane("Error");
                     error.showMessageDialog(null, "Please enter a valid choice");
                 }
-            } catch (NumberFormatException e) {
+            }
+            catch (NumberFormatException e) {
+                //validChoice = false;
+                //JOptionPane error = new JOptionPane("Error");
                 return;
             }
         }
@@ -356,7 +362,10 @@ public class GUITest extends JPanel implements MouseListener {
         while (!isRoute) {
             String location1 = JOptionPane.showInputDialog(frame, "Enter the first endpoint of the route you'd like to claim");
             String location2 = JOptionPane.showInputDialog(frame, "Enter the second endpoint of the route you'd like to claim");
-
+            if (location1 != null && location2 != null) {
+                location1 = location1.trim();
+                location2 = location2.trim();
+            }
             //figure out which route they want
             desired = findRoute(location1, location2);
 
@@ -464,7 +473,7 @@ public class GUITest extends JPanel implements MouseListener {
         //  but needs to actually call appropriate methods to add the route to
         //  the player's possession
         else{
-            JOptionPane.showMessageDialog(frame, "You can claim this route!");
+            JOptionPane.showMessageDialog(frame, "You have successfully claimed this route!");
             return true;
         }
 
@@ -582,14 +591,17 @@ public class GUITest extends JPanel implements MouseListener {
         //  get current player
         Player p = driver.getPlayers().get(driver.getPlayerTurn());
         //  uses driver to draw two destination cards and saves in an array
+        ArrayList<DestinationCard> choices = driver.drawTwoDest();
+        //  asks the user to enter "1" to take the first card, "2" for the second, or "both"
         String playerChoice = "";
         boolean validChoice = false;
-        ArrayList<DestinationCard> choices = driver.drawTwoDest();
+        //loops until 1, 2, both is given as input
         while(!validChoice) {
             playerChoice = JOptionPane.showInputDialog(p.getName() + ", you have drawn these cards: "+ choices.get(0).toString() + " and " +
                 choices.get(1) + " \n" +
                 "Enter \"both\" to take both, \"1\" for the first card, and \"2\" for the second");
             if (playerChoice != null) {
+                playerChoice = playerChoice.trim();
                 if (playerChoice.equals("1") || playerChoice.equals("2") || playerChoice.equals("both")) {
                     validChoice = true;
                 }
@@ -621,6 +633,7 @@ public class GUITest extends JPanel implements MouseListener {
             tCardChoice = (JOptionPane.showInputDialog(frame, "Enter \"blind\" to draw from the top of the transportation deck" +
                     "Enter \"face\" to draw a face card. You may only draw once if you take a taxi card."));
             if (tCardChoice != null) {
+                tCardChoice = tCardChoice.trim();
                 tCardChoice = tCardChoice.toLowerCase();
                 if (tCardChoice.equals("face") || tCardChoice.equals("blind")) {
                     validChoice = true;
@@ -691,11 +704,11 @@ public class GUITest extends JPanel implements MouseListener {
                     else {
                         JOptionPane error = new JOptionPane("Error");
                         error.showMessageDialog(null, "Enter a valid choice");
+                        //return false;
                     }
                 }
                 catch (NumberFormatException e) {
-                    //validChoice = false;
-                    //JOptionPane error = new JOptionPane("Error");
+                    //JOptionPane.showMessageDialog(null, "Error: Enter a number");
                     return false;
                 }
             }
@@ -794,8 +807,7 @@ public class GUITest extends JPanel implements MouseListener {
                 validChoice = true;
             }
             else {
-                JOptionPane error = new JOptionPane("Error");
-                error.showMessageDialog(null, "Enter a valid choice");
+                JOptionPane.showMessageDialog(null, "Enter a valid choice");
             }
         }
 
@@ -848,12 +860,12 @@ public class GUITest extends JPanel implements MouseListener {
                         validChoice = true;
                     }
                     else {
-                        JOptionPane error = new JOptionPane("Error");
-                        error.showMessageDialog(null, "Enter a valid choice");
+                        JOptionPane.showMessageDialog(null, "Enter a valid choice");
                     }
                 }
                 catch (NumberFormatException e) {
-                    return false;
+                    JOptionPane.showMessageDialog(null, "Error: Enter a number");
+                    //return false;
                 }
             }
             //add choice to player hand and remove from display, replacing with top card on deck
