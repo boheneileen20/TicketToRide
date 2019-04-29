@@ -2,17 +2,17 @@ import java.util.*;
 import java.awt.*;
 import java.util.ArrayList;
 /**
- * Write a description of class DestComplete here.
+ * Keeps track of player score
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Josh Rosenthal
+ * @version Spring 2019
  */
 public class Score
 {
     /**
      * Method which takes in a player and a destination card as an 
      * input and checks to see if the player has a connected set of
-     * routes connecting the locations on the destination card
+     * routes connecting the locations on the destination card.
      * 
      * @param p Player the player who's claimed routes will be checked
      * @param d DestCard to check if player has connecting routes
@@ -32,6 +32,7 @@ public class Score
         return false;//p.addDestScore(-(d.getNum()));
 
     }
+    
     /**
      * Recursive helper method which traverses from location to
      * location checking for connections to other locations with

@@ -76,11 +76,21 @@ public class Route
         return loc2;
     }
 
+    /**
+     * Gets the rquired taxis
+     * 
+     * @return The required taxis to claim a route
+     */
     public int getRecTaxis(){
         String[] recs = requirement.split(" ");
         return Integer.parseInt(recs[1]);
 
     }
+    /**
+     * Gets the color of a route
+     * 
+     * @return Returns the color of a route
+     */
     public String getRouteColor(){
         String[] recs = requirement.split(" ");
         return recs[0];
