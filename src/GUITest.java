@@ -176,7 +176,7 @@ public class GUITest extends JPanel implements MouseListener {
      * */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
+        g.drawLine(0,0,100,100);
     }
 
     /*
