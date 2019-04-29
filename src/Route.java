@@ -17,6 +17,7 @@ public class Route
     //for example, if four pink cards are needed, 
     //the entry is "pink 4"
     String requirement;
+
     
     /**
      * Constructor for Route objects, initializes instance variables
@@ -28,6 +29,7 @@ public class Route
         this.loc1 = loc1;
         this.loc2 = loc2;
         this.requirement = requirement;
+
     }
     
 
@@ -56,6 +58,11 @@ public class Route
     public int getRecTaxis(){
         String[] recs = requirement.split(" ");
         return Integer.parseInt(recs[1]);
+
+    }
+    public String getRouteColor(){
+        String[] recs = requirement.split(" ");
+        return recs[0];
 
     }
 }
