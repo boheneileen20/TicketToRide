@@ -176,7 +176,6 @@ public class GUITest extends JPanel implements MouseListener {
      * */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawLine(0,0,100,100);
     }
 
     /*
@@ -230,7 +229,6 @@ public class GUITest extends JPanel implements MouseListener {
         frame.getContentPane().add(panel);
         frame.pack();
         frame.setVisible(true);
-
     }
 
     /*
@@ -476,7 +474,6 @@ public class GUITest extends JPanel implements MouseListener {
             JOptionPane.showMessageDialog(frame, "You have successfully claimed this route!");
             return true;
         }
-
     }
 
     /*
@@ -852,9 +849,11 @@ public class GUITest extends JPanel implements MouseListener {
         else if(tCardChoice.equals("face")){
             //loops until 1, 2, 3, 4, 5 is given
             int faceChoice = 0;
+            boolean rainbow = false;
             validChoice = false;
             while (!validChoice) {
                 try {
+                    rainbow = false;
                     faceChoice = Integer.parseInt(JOptionPane.showInputDialog(frame, "Enter 1,2,3,4, or 5 to draw that face up card."));
                     if (faceChoice >= 1 && faceChoice <= 5) {
                         validChoice = true;
@@ -862,10 +861,17 @@ public class GUITest extends JPanel implements MouseListener {
                     else {
                         JOptionPane.showMessageDialog(null, "Enter a valid choice");
                     }
+                    if (driver.getDisplayTransCards().get(faceChoice-1).getColor().equals("RAINBOW")) {
+                        rainbow = true;
+                        JOptionPane.showMessageDialog(null, "Error: Can't claim rainbow as second card");
+                    }
                 }
                 catch (NumberFormatException e) {
                     JOptionPane.showMessageDialog(null, "Error: Enter a number");
                     //return false;
+                }
+                if (rainbow) {
+                    validChoice = false;
                 }
             }
             //add choice to player hand and remove from display, replacing with top card on deck
