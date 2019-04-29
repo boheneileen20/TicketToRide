@@ -7,7 +7,7 @@ import java.awt.event.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-/*
+/**
  * This class contains the main method that must be run to play the game.
  * The class contains an instance of TTRDriver, which handles much of the game
  * logic and initializes many aspects of the game. This class focuses on 
@@ -47,28 +47,39 @@ public class GUITest extends JPanel implements MouseListener {
     //driver that handles much of the game logic
     private TTRDriver driver;
 
-    //center board panel
+    /**
+     * center board panel
+     */
     JPanel game;
-    //left side panel
+    /**
+     * left side panel
+     */
     JPanel left;
-    //top panel
+    /**
+     * top panel
+     */
     JPanel top;
-    //bottom panel
+    /**
+     * bottom panel
+     */
     JPanel bottom;
-    //right panel
+    /**
+     * right panel
+     */
     JPanel right;
 
-    //    true if the current player's turn is over
+    /**
+     * true if the current player's turn is over
+     */    
     boolean turnOver;
 
-    /*
-     * Constructor for the GUITest class. Begins interaction with user by
-     * asking for number of players, taking player names and ages, and creating
-     * the Player objects that are needed to run the driver. Deals starting 
-     * hand to each player as well.
-     *
-     * Begins actual graphics by creating the frame that the panels sits upon,
-     * and sets MouseListener functionality.
+    /**
+     * Begins interaction with user by, asking for number of players, 
+     * taking player names and ages, and creating the Player objects 
+     * that are needed to run the driver. Deals starting 
+     * hand to each player as well. Begins actual graphics by 
+     * creating the frame that the panels sits upon, and sets 
+     * MouseListener functionality.
      *
      * */
 
@@ -175,14 +186,16 @@ public class GUITest extends JPanel implements MouseListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    /*
-     * paint component method
+    /**
+     * Paints the game onto the screen
+     * 
+     * @param g - The graphics object
      * */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
     }
 
-    /*
+    /**
      * Creates panels by calling methods that create them, then adds them
      * to the frame.
      * */
@@ -241,6 +254,9 @@ public class GUITest extends JPanel implements MouseListener {
 
     }
 
+    /**
+     * Goes through final turns, calculates scores, see who won
+     */
     public void endGame() {
         JOptionPane.showMessageDialog(frame,"Everyone has one turn left!");
         driver.nextPlayersTurn();
@@ -272,8 +288,8 @@ public class GUITest extends JPanel implements MouseListener {
             " has won the game with a score of " + max + " points!");
     }
 
-    /*
-     * Completes a players turn. User can draw transportation cards,
+    /**
+     * Completes a players turn, user can draw transportation cards,
      * destination cards, or claim a route.
      * */
     public void completeTurn() {
@@ -369,11 +385,12 @@ public class GUITest extends JPanel implements MouseListener {
         createAndShowGUI();
     }
 
-    /*
+    /**
      * Helps the completeRoute method by figuring out which route a 
-     * player would like to claim by taking in two location strings
+     * player would like to claim by taking in two location strings.
      *
-     * @param    2 Strings holding the name of the location on the map
+     * @param    loc1 Location 1 on the map
+     * @param    loc2 Location 2 on the map
      * @return   Route object that is the route the player is referring to, 
      * or null if nonexistent.
      * */
@@ -426,10 +443,11 @@ public class GUITest extends JPanel implements MouseListener {
         }
     }
 
-    /*
-     * Called when the user chooses to claim a route. Asks which 
-     * route they'd like to claim and checks if they're able to claim it.
-     * Awards the route if appropriate.
+    /**
+     * Asks which route they'd like to claim and checks if they're able to claim
+     * it, awards the route if appropriate.
+     * 
+     * @return A boolean that describes if the route was claimed or not.
      *
      * */
     public boolean claimRoute() {
@@ -605,11 +623,18 @@ public class GUITest extends JPanel implements MouseListener {
 
     }
 
-    /*
-     * removes color cards from player's tranportation hand after claiming
-     * route
+    /**
+     * Removes color cards from player's tranportation hand after claiming
+     * route.
      *
-     * @param Player to remove from, int for each color card
+     * @param p Player to remove from
+     * @param blue Payment for blue card
+     * @param gray Payment for gray card
+     * @param green Payment for green card
+     * @param orange Payment for orange card
+     * @param pink Payment for pink card
+     * @param red Payment for red card
+     * @param rainbow Payment for rainbow card
      * */
     public void takePayment(Player p, int blue, int gray, int green, 
     int orange, int pink, int red, int rainbow) {
@@ -637,13 +662,20 @@ public class GUITest extends JPanel implements MouseListener {
 
     }
 
-    /*
+    /**
      * Checks if a Player can pay for a route with their offered amounts 
-     * of cards. Called by claimRoute()
+     * of cards.
      *
-     * @param    the Route they'd like to claim, int values for each color 
-     *           card (their offer)
-     * @return   true if the user's card offer can be used to pay for the route
+     * @param r The Route they'd like to claim
+     * @param blue Payment for blue card
+     * @param gray Payment for gray card
+     * @param green Payment for green card
+     * @param orange Payment for orange card
+     * @param pink Payment for pink card
+     * @param red Payment for red card
+     * @param rainbow Payment for rainbow card
+     * 
+     * @return   true if the user's card offer can be used to pay for the route.
      * */
     public boolean canPay(Route r, int blue, int gray, int green, 
     int orange, int pink, int red, int rainbow) {
@@ -715,11 +747,11 @@ public class GUITest extends JPanel implements MouseListener {
 
     }
 
-    /*
-     * Called when the user chooses to draw a destination card. 
-     * Offers two cards and allows the user to pick choice 1, 2, or both. 
-     * Adds to their hand and
-     * discards unwanted cards (if any).
+    /**
+     * Offers two cards and allows the user to pick choice 1, 2, or both,
+     * adds to their hand and discards unwanted cards (if any).
+     * 
+     * @return true if the player completed the action, false elsewise
      *
      * */
     public boolean drawDest() {
@@ -756,12 +788,12 @@ public class GUITest extends JPanel implements MouseListener {
         return true;
     }
 
-    /*
-     * Called when the user chooses to draw transportation cards. 
-     * User can draw a face up card or a face down card. If the user picks 
-     * a face up taxi card, their turn is over. They can't pick a face 
-     * up taxi on their second choice. Adds the selected cards to their hand.
+    /**
+     * User can draw a face up card or a face down card.&nbsp; If the user picks 
+     * a face up taxi card, their turn is over.&nbsp; They can't pick a face 
+     * up taxi on their second choice.&nbsp; Adds the selected cards to their hand.
      *
+     * @return true if the player completed the action, false elsewise
      * */
     public boolean drawTrans(){
         //  gets user's decision for first card draw
@@ -1109,8 +1141,8 @@ public class GUITest extends JPanel implements MouseListener {
         return true;
     }
 
-    /*
-     * Creates the right panel
+    /**
+     * Creates the right panel which holds information on cards to be drawn
      *
      * @return   a Panel that holds the transportation cards and their labels,
      * as well as the blind draw pile
@@ -1193,10 +1225,10 @@ public class GUITest extends JPanel implements MouseListener {
         return p;
     }
 
-    /*
-     * Creates the bottom panel (used only for "Ticket to Ride" label currently)
+    /**
+     * Creates the bottom panel (used only for "Ticket to Ride" label currently).
      *
-     * @return   a Panel with a label
+     * @return   a Panel with the label "Ticket to Ride"
      * */
     public JPanel bottomPanel() {
         //  make panel
@@ -1280,11 +1312,11 @@ public class GUITest extends JPanel implements MouseListener {
         return p;
     }
 
-    /*
-     * Creates top panel. Holds text label contianing who' turn it is.
-     * Button is added in createAndShowGUi()
+    /**
+     * Creates top panel.&nbsp; Holds text label contianing who's 
+     * turn it is.&nbsp; Button is added in createAndShowGUi()
      *
-     * @return Panel with label
+     * @return Panel with label describing who's turn it is
      * */
     public JPanel topPanel() {
         JPanel p = new JPanel();
@@ -1302,12 +1334,14 @@ public class GUITest extends JPanel implements MouseListener {
         return p;
     }
 
-    /*
+    /**
      * Creates left side panel for player info:
      *   1)  transportation hand
      *   2)  taxis
      *   3)  button to see destination hand
      *   4)  picture of destination card deck (fae down pile)
+     *   
+     *   @return A panel with player information displayed
      *
      * */
     public JPanel leftPanel() {
@@ -1513,8 +1547,8 @@ public class GUITest extends JPanel implements MouseListener {
         return p;
     }
 
-    /*
-     * Creates center panel. Contains a scaled image of the board.
+    /**
+     * Creates center panel.&nbsp; Contains a scaled image of the board.
      *
      * @return panel with board image on it
      * */
@@ -1543,11 +1577,11 @@ public class GUITest extends JPanel implements MouseListener {
         return p;
     }
 
-    /*
-     * Determines if a player has fulfilled a destination card
+    /**
+     * Determines if a player has fulfilled a destination card.
      *
-     * @param DestinationCard, the card in question, Player p,
-     *   the player in question
+     * @param d The DestinationCard in question
+     * @param p The current Player
      *
      * @return true if player's routes fulfill card, false otherwise
      * */
