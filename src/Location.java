@@ -1,58 +1,59 @@
 /**
- * Information about location.
+ * Encapsulate information about the location.
  *
  * @author Eileen Bohen
  * @version Spring 2019
  */
 public class Location {
     /**
-     * Name of location.
+     * The name of the location.
      */
     String name;
     /**
-     * X coordinate of location.
+     * The x coordinate of the location.
      */
     int xCoord;
     /**
-     * Y coordinate of location.
+     * The y coordinate of the location.
      */
     int yCoord;
     /**
-     * Whether or not location is attraction.
+     * Whether or not the location is an attraction.
      */
-    boolean isTourist;
+    boolean attraction;
 
     /**
-     * Constructor initializes instance variables.
+     * Initializes name, coordinates, and attraction.
      * 
      * @param name The name of the location.
-     * @param xCoord The location's x coordinate.
-     * @param yCoord The location's y coordinate.
-     * @param isTourist Whether location is attraction.
+     * @param xCoord The x coordinate of the location.
+     * @param yCoord The y coordinate of the location.
+     * @param attration Whether it is an attraction or not.
      */
-    public Location(String name, int xCoord, int yCoord, boolean isTourist){
+    public Location(String name, int xCoord, 
+    int yCoord,boolean isTouristAttraction){
         this.name = name;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
-        this.isTourist = isTourist;
-
+        attraction = isTouristAttraction;
     }
-
+    
     /**
-     * Returns name of location.
+     * Returns the name of the location
      * 
-     * @return The name of the location.
+     * @return The name of the attraction.
      */
     public String getName(){
         return name;
     }
-
+    
     /**
-     * Returns whether location is attraction.
+     * Initializes name, coordinates, and attraction.
      * 
-     * @return True if location is attraction, false otherwise.
+     * @return True if location is an attraction, false otherwise.
      */
-    public boolean getTourist(){
-        return isTourist;
+    public boolean isAttraction() 
+    { 
+        return attraction;
     }
 }

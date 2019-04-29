@@ -31,7 +31,6 @@ public class Route
         this.loc1 = loc1;
         this.loc2 = loc2;
         this.requirement = requirement;
-
     }
 
     /**
@@ -74,16 +73,5 @@ public class Route
      */
     public Location getLoc2(){
         return loc2;
-    }
-
-    public int getRecTaxis(){
-        String[] recs = requirement.split(" ");
-        return Integer.parseInt(recs[1]);
-
-    }
-    public String getRouteColor(){
-        String[] recs = requirement.split(" ");
-        return recs[0];
-
     }
 }
