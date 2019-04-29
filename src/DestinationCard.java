@@ -23,7 +23,7 @@ public class DestinationCard
      * The picture of the card.
      */
     private Image picture;
-    
+
     /**
      * Initializes instance variables.
      * 
@@ -32,13 +32,14 @@ public class DestinationCard
      * @param dest2 The second destination. 
      * @param picture The image of the card.
      */
-    public DestinationCard(int num, Location dest1, Location dest2, Image picture){
+    public DestinationCard(int num, Location dest1, Location dest2,
+    Image picture){
         this.num = num;
         this.dest1 = dest1;
         this.dest2 = dest2;
         this.picture = picture;
     }
-    
+
     /**
      * Returns the number of the card.
      * 
@@ -47,7 +48,7 @@ public class DestinationCard
     public int getNum(){
         return num;
     }
-    
+
     /**
      * Returns the first destination.
      * 
@@ -56,7 +57,7 @@ public class DestinationCard
     public Location getDest1(){
         return dest1;
     }
-    
+
     /**
      * Returns the second destination.
      * 
@@ -65,7 +66,7 @@ public class DestinationCard
     public Location getDest2(){
         return dest2;
     }
-    
+
     /**
      * Returns the card image.
      * 
@@ -82,11 +83,11 @@ public class DestinationCard
      */
     public String toString(){
 
-        String message = dest1 + " to " + dest2;
+        String message = dest1.getName() + " to " + dest2.getName();
         message += " for " + num + " points.";
 
         return message;
 
     }
-    
+
 }
