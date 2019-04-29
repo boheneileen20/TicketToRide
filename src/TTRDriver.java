@@ -183,20 +183,20 @@ public class TTRDriver {
         destCards.add(UNWall8);
 
         /* read in transportation card images and save them in an arraylist*/
-        TransportationCard blue1 =  new  TransportationCard("BLUE", toolkit.getImage("C:/Users/patri/Documents/eileen/ttrrestored/src/fwdpieces/blue_1.jpg"));
-        TransportationCard blue2 =  new  TransportationCard("BLUE", toolkit.getImage("C:/Users/patri/Documents/eileen/ttrrestored/src/fwdpieces/blue_2.jpg"));
-        TransportationCard gray1 =  new  TransportationCard("GRAY", toolkit.getImage("C:/Users/patri/Documents/eileen/ttrrestored/src/fwdpieces/gray_1.jpg"));
-        TransportationCard gray2 =  new  TransportationCard("GRAY", toolkit.getImage("C:/Users/patri/Documents/eileen/ttrrestored/src/fwdpieces/gray_2.jpg"));
-        TransportationCard green1 =  new  TransportationCard("GREEN", toolkit.getImage("C:/Users/patri/Documents/eileen/ttrrestored/src/fwdpieces/green_1.jpg"));
-        TransportationCard green2 =  new  TransportationCard("GREEN", toolkit.getImage("C:/Users/patri/Documents/eileen/ttrrestored/src/fwdpieces/green_2.jpg"));
-        TransportationCard orange1 =  new  TransportationCard("ORANGE", toolkit.getImage("C:/Users/patri/Documents/eileen/ttrrestored/src/fwdpieces/orange_1.jpg"));
-        TransportationCard orange2 =  new  TransportationCard("ORANGE", toolkit.getImage("C:/Users/patri/Documents/eileen/ttrrestored/src/fwdpieces/orange_2.jpg"));
-        TransportationCard pink1 =  new  TransportationCard("ORANGE", toolkit.getImage("C:/Users/patri/Documents/eileen/ttrrestored/src/fwdpieces/pink_1.jpg"));
-        TransportationCard pink2 =  new  TransportationCard("ORANGE", toolkit.getImage("C:/Users/patri/Documents/eileen/ttrrestored/src/fwdpieces/pink_2.jpg"));
-        TransportationCard rainbow1 =  new  TransportationCard("RAINBOW", toolkit.getImage("C:/Users/patri/Documents/eileen/ttrrestored/src/fwdpieces/rainbow_1.jpg"));
-        TransportationCard rainbow2 =  new  TransportationCard("RAINBOW", toolkit.getImage("C:/Users/patri/Documents/eileen/ttrrestored/src/fwdpieces/rainbow_2.jpg"));
-        TransportationCard red1 =  new  TransportationCard("RED", toolkit.getImage("C:/Users/patri/Documents/eileen/ttrrestored/src/fwdpieces/red_1.jpg"));
-        TransportationCard red2 =  new  TransportationCard("RED", toolkit.getImage("C:/Users/patri/Documents/eileen/ttrrestored/src/fwdpieces/red_2.jpg"));
+        TransportationCard blue1 =  new  TransportationCard("BLUE", toolkit.getImage("fwdpieces/blue_1.jpg"));
+        TransportationCard blue2 =  new  TransportationCard("BLUE", toolkit.getImage("fwdpieces/blue_2.jpg"));
+        TransportationCard gray1 =  new  TransportationCard("GRAY", toolkit.getImage("fwdpieces/gray_1.jpg"));
+        TransportationCard gray2 =  new  TransportationCard("GRAY", toolkit.getImage("fwdpieces/gray_2.jpg"));
+        TransportationCard green1 =  new  TransportationCard("GREEN", toolkit.getImage("fwdpieces/green_1.jpg"));
+        TransportationCard green2 =  new  TransportationCard("GREEN", toolkit.getImage("fwdpieces/green_2.jpg"));
+        TransportationCard orange1 =  new  TransportationCard("ORANGE", toolkit.getImage("fwdpieces/orange_1.jpg"));
+        TransportationCard orange2 =  new  TransportationCard("ORANGE", toolkit.getImage("fwdpieces/orange_2.jpg"));
+        TransportationCard pink1 =  new  TransportationCard("ORANGE", toolkit.getImage("fwdpieces/pink_1.jpg"));
+        TransportationCard pink2 =  new  TransportationCard("ORANGE", toolkit.getImage("fwdpieces/pink_2.jpg"));
+        TransportationCard rainbow1 =  new  TransportationCard("RAINBOW", toolkit.getImage("fwdpieces/rainbow_1.jpg"));
+        TransportationCard rainbow2 =  new  TransportationCard("RAINBOW", toolkit.getImage("fwdpieces/rainbow_2.jpg"));
+        TransportationCard red1 =  new  TransportationCard("RED", toolkit.getImage("fwdpieces/red_1.jpg"));
+        TransportationCard red2 =  new  TransportationCard("RED", toolkit.getImage("fwdpieces/red_2.jpg"));
         /* this arraylist holds the horizontal images*/
         //there are 8 of each of the color cards
         for(int i = 0; i<6; i++) {
