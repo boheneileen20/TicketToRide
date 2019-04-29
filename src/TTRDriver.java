@@ -112,7 +112,7 @@ public class TTRDriver {
 
     /**
      * Reads in card images  and initializes card objects
-     * NEEDS FIXING: path1s for file names only work on Eileen's machine
+     *
      *
      * */
     public void readCardImages(){
@@ -171,6 +171,7 @@ public class TTRDriver {
         DestinationCard UNWall8 =  new  DestinationCard(8, locations.get(4), 
                 locations.get(13), toolkit.getImage(path1 + "UN_wall_8.jpg"));
 
+
         //  add to dest cards array (deck)
         destCards.add(centralChelsea5);
         destCards.add(centralChina8);
@@ -221,6 +222,7 @@ public class TTRDriver {
                 toolkit.getImage(path2 + "red_1.jpg"));
         TransportationCard red2 =  new  TransportationCard("RED",
                 toolkit.getImage(path2 + "red_2.jpg"));
+
         /* this arraylist holds the horizontal images*/
         //there are 8 of each of the color cards
         for(int i = 0; i<6; i++) {
