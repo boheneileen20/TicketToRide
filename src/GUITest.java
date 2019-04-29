@@ -3,6 +3,7 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /*
@@ -349,14 +350,47 @@ public class GUITest extends JPanel implements MouseListener {
      * @return   Route object that is the route the player is referring to, or null if nonexistent.
      * */
     public Route findRoute(String loc1, String loc2) {
+
+        ArrayList<Route> found = new ArrayList<>();
         for (Route r : driver.getRoutes()) {
             if (r.getLoc1().getName().equalsIgnoreCase(loc1) || r.getLoc1().getName().equalsIgnoreCase(loc2)) {
                 if (r.getLoc2().getName().equalsIgnoreCase(loc1) || r.getLoc2().getName().equalsIgnoreCase(loc2)) {
-                    return r;
+                    found.add(r);
                 }
             }
         }
-        return null;
+        if(found.size() == 0){
+            return null;
+        }
+        //  if there's only one found route, return it
+        if(found.size() == 1){
+            return found.get(0);
+        }
+        //  it's a double route, so if it's a colored route ask which one they want
+        if(found.get(0).getRouteColor().equalsIgnoreCase(("white"))){
+            return found.get(0);
+        }
+        else{
+            Route option1 = found.get(0);
+            Route option2 = found.get(1);
+            boolean validColor = false;
+            while(!validColor) {
+                String colorChoice = JOptionPane.showInputDialog(frame, "Do you want the " + option1.getRouteColor() + " route, " +
+                        "or the " + option2.getRouteColor() + "route?");
+                if(colorChoice.equalsIgnoreCase(option1.getRouteColor())){
+                    validColor = true;
+                    return option1;
+
+                }
+                else if(colorChoice.equalsIgnoreCase(option2.getRouteColor())){
+                    validColor = true;
+                    return option2;
+
+                }
+
+            }
+            return null;
+        }
     }
 
     /*
@@ -1104,6 +1138,61 @@ public class GUITest extends JPanel implements MouseListener {
         panel.add(jLabel);
         panel.setBorder(new LineBorder(Color.BLACK));
 
+        //  button to see the available routes left
+        JButton seeRoutes = new JButton("See available routes");
+        panel.add(seeRoutes);
+
+        //  action listener for destination card button
+        seeRoutes.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+
+                //  creates a pop up window listing unclaimed routes
+                //make scrolling panel with images of destination cards on it
+                JPanel routePanel = new JPanel();
+                routePanel.setSize(new Dimension(200, 150));
+                routePanel.setLayout(new GridLayout(30, 1));
+                //get each available route
+                for (Route r: driver.getRoutes()){
+                    JLabel route = new JLabel(r.getLoc1().getName() + " to " + r.getLoc2().getName() + "\n");
+                    routePanel.add(route);
+                }
+                // add to the scrolling panel the panel with the images
+                JScrollPane scroll = new JScrollPane(routePanel);
+                //show panel
+                JOptionPane.showMessageDialog(frame, scroll, "These routes are available", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+        //  button to see the available routes left
+        JButton seeClaimedRoutes= new JButton("See your claimed routes");
+        panel.add(seeClaimedRoutes);
+
+        //  action listener for destination card button
+        seeClaimedRoutes.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+
+                //  creates a pop up window listing unclaimed routes
+                //make scrolling panel with images of destination cards on it
+                JPanel routePanel = new JPanel();
+                routePanel.setSize(new Dimension(200, 150));
+                routePanel.setLayout(new GridLayout(30, 1));
+                //get each available route
+                for (Route r: driver.getPlayers().get(driver.getPlayerTurn()).getRoutes()){
+                    JLabel route = new JLabel(r.getLoc1().getName() + " to " + r.getLoc2().getName() + "\n");
+                    routePanel.add(route);
+                }
+                // add to the scrolling panel the panel with the images
+                JScrollPane scroll = new JScrollPane(routePanel);
+                //show panel
+                JOptionPane.showMessageDialog(frame, scroll, "You've claimed these routes", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+
         //  add panel with text panel to main panel
         p.add(panel);
         return p;
@@ -1118,11 +1207,13 @@ public class GUITest extends JPanel implements MouseListener {
         JPanel p = new JPanel();
         p.setSize(new Dimension(1000, 100));
         p.setBackground(Color.RED);
+        p.setLayout(new GridLayout(1, 2));
         JPanel panel = new JPanel();
         JLabel jLabel = new JLabel("It is " + driver.getPlayers().get(driver.getPlayerTurn()).getName() + "'s turn.");
         jLabel.setFont(new Font("Calibri", 1, 15));
         panel.add(jLabel, BorderLayout.WEST);
         panel.setBorder(new LineBorder(Color.BLACK));
+
 
         p.add(panel);
         return p;
@@ -1141,7 +1232,9 @@ public class GUITest extends JPanel implements MouseListener {
         JPanel p = new JPanel();
         p.setSize(new Dimension(200, 800));
         p.setBackground(Color.BLUE);
-        p.setLayout(new GridLayout(10, 1));
+      
+        p.setLayout(new GridLayout(2, 1));
+
 
         //  panel to hold transportation cards
         JPanel transCardHandPanel = new JPanel();
@@ -1230,7 +1323,9 @@ public class GUITest extends JPanel implements MouseListener {
         scorePanel.setSize(new Dimension(200, 100));
         scorePanel.setBackground(Color.WHITE);
         //  set grid layout
-        scorePanel.setLayout(new GridLayout(10, 1));
+      
+        scorePanel.setLayout(new GridLayout(20, 1));
+
 
         //  taxis by player are displayed on this panel
         JLabel taxiLabel = new JLabel("Taxis: " + driver.getPlayers().get(driver.getPlayerTurn()).getTaxis());
@@ -1286,6 +1381,8 @@ public class GUITest extends JPanel implements MouseListener {
         JLabel routeScore = new JLabel("Your score for routes claimed: " +  driver.getPlayers().get(driver.getPlayerTurn()).getRouteScore());
         scorePanel.add(routeScore);
 
+
+
         //  add panels to top panel
         transCardHandPanel.add(nameLabel);
         transCardHandPanel.add(bluePile);
@@ -1308,7 +1405,7 @@ public class GUITest extends JPanel implements MouseListener {
         //  add all three panels to main panel
         p.add(transCardHandPanel);
         p.add(scorePanel);
-        p.add(destDrawPile);
+       // p.add(destDrawPile);
 
         //  return main panel
         return p;
@@ -1330,7 +1427,7 @@ public class GUITest extends JPanel implements MouseListener {
 
         //  add the board image to the panel
         Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image boardImage = toolkit.getImage("fwdboardandtransport/game_board.jpg");
+        Image boardImage = toolkit.getImage("src/fwdboardandtransport/game_board.jpg");
 
         //  scales image
         boardImage = boardImage.getScaledInstance(650, 675, 0);
