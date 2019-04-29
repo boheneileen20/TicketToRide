@@ -7,9 +7,13 @@ import java.awt.*;
  */
 public class TransportationCard
 {
-    //the color of the transportation card
+    /**
+     * The color of the transportation card.
+     */
     private String color;
-    //the picture of the card
+    /**
+     * The picture of the card.
+     */
     private Image picture;
     
     /**
