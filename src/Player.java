@@ -24,6 +24,11 @@ public class Player {
     private ArrayList<Location> tourist = new ArrayList<>();
     //  score for routes claimed
     private int routeScore;
+    // score for dests
+    private int destScore;
+    //final score
+    private int finalScore;
+    
 
     /**
      * Constructor for player objects. Instantiates name and age to the user inputs, taxis to 15, their hands to empty,
@@ -195,6 +200,22 @@ public class Player {
 
     public int getRouteScore(){
         return routeScore;
+    }
+    
+    public void calcFinalScore(){
+        finalScore = destScore + routeScore;
+    }
+    
+    public int getFinalScore(){
+        return finalScore;
+    }
+    
+    public int getDestScore() {
+        return destScore;
+    }
+    
+    public void addDestScore(int num) {
+        destScore += num;
     }
 
 

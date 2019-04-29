@@ -59,8 +59,6 @@ public class GUITest extends JPanel implements MouseListener {
 
 
 
-
-
     /*
      * Constructor for the GUITest class. Begins interaction with user by
      * asking for number of players, taking player names and ages, and creating
@@ -73,7 +71,7 @@ public class GUITest extends JPanel implements MouseListener {
      * */
 
     public GUITest() {
-
+        
         //       ask user to enter the number of players
         boolean validPlayer = false;
         int numPlayers = 0;
@@ -169,7 +167,11 @@ public class GUITest extends JPanel implements MouseListener {
      * to the frame.
      * */
     public void createAndShowGUI() {
-
+        for (Player p: driver.getPlayers()) {
+            if (p.getTaxis() < 3) {
+                endGame();
+            }
+        }
         //  background panel
         JPanel panel = new JPanel();
         panel.setBackground(Color.white);
@@ -217,11 +219,36 @@ public class GUITest extends JPanel implements MouseListener {
         frame.setVisible(true);
 
     }
-
-    /*
-     * Completes a players turn. User can draw transportation cards,
-     * destination cards, or claim a route.
-     * */
+    
+    public void endGame() {
+        JOptionPane.showMessageDialog(frame,"Everyone has one turn left!");
+        driver.nextPlayersTurn();
+        for (int i = driver.getPlayerTurn(); i < driver.getPlayers().size(); i --) {
+            completeTurn();
+            driver.nextPlayersTurn();
+        }
+        Score s = new Score();
+        for (Player p: driver.getPlayers()) {
+            for (DestinationCard d: p.getDestHand()) {
+                if (s.isComplete(p,d)) {
+                    p.addDestScore(d.getNum());
+                }
+                else p.addDestScore(-(d.getNum()));
+            }
+            p.calcFinalScore();
+        }
+        int max = -999;
+        Player win = null;
+        for (Player p: driver.getPlayers()) {
+            if (p.getFinalScore() > max) {
+                win = p;
+                max = p.getFinalScore();
+            }
+        }
+        JOptionPane.showMessageDialog(frame,win.getName() + " has won the game with a score of "
+        + max + " points!");
+    }
+    
     /*
      * Completes a players turn. User can draw transportation cards,
      * destination cards, or claim a route.
@@ -471,7 +498,6 @@ public class GUITest extends JPanel implements MouseListener {
             panel2.setPreferredSize(new Dimension(1000, 800));
             //  this allows you to use the border layout with 5 regions
             panel2.setLayout(new BorderLayout());
-
 
             //center board panel
             game = boardPanel();
@@ -1115,7 +1141,7 @@ public class GUITest extends JPanel implements MouseListener {
         JPanel p = new JPanel();
         p.setSize(new Dimension(200, 800));
         p.setBackground(Color.BLUE);
-        p.setLayout(new GridLayout(5, 1));
+        p.setLayout(new GridLayout(10, 1));
 
         //  panel to hold transportation cards
         JPanel transCardHandPanel = new JPanel();
@@ -1204,7 +1230,7 @@ public class GUITest extends JPanel implements MouseListener {
         scorePanel.setSize(new Dimension(200, 100));
         scorePanel.setBackground(Color.WHITE);
         //  set grid layout
-        scorePanel.setLayout(new GridLayout(5, 1));
+        scorePanel.setLayout(new GridLayout(10, 1));
 
         //  taxis by player are displayed on this panel
         JLabel taxiLabel = new JLabel("Taxis: " + driver.getPlayers().get(driver.getPlayerTurn()).getTaxis());
