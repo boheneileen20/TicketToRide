@@ -66,7 +66,7 @@ public class DestinationCard
     }
 
     public String toString(){
-        String message = dest1 + " to " + dest2 + " for " + num + " points.";
+        String message = dest1.getName() + " to " + dest2.getName() + " for " + num + " points.";
         return message;
 
     }
