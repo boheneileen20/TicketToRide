@@ -1,3 +1,5 @@
+package src;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -227,6 +229,7 @@ public class GUITest extends JPanel implements MouseListener {
             completeTurn();
             driver.nextPlayersTurn();
         }
+        // create instance of Score
         Score s = new Score();
         for (Player p: driver.getPlayers()) {
             for (DestinationCard d: p.getDestHand()) {
