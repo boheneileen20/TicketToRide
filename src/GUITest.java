@@ -57,16 +57,9 @@ public class GUITest extends JPanel implements MouseListener {
     //    true if the current player's turn is over
     boolean turnOver;
 
-    /*
-     * Constructor for the GUITest class. Begins interaction with user by
-     * asking for number of players, taking player names and ages, and creating
-     * the Player objects that are needed to run the driver. Deals starting hand to
-     * each player as well.
-     *
-     * Begins actual graphics by creating the frame that the panels sits upon,
-     * and sets MouseListener functionality.
-     *
-     * */
+
+
+
 
     /*
      * Constructor for the GUITest class. Begins interaction with user by
@@ -78,16 +71,7 @@ public class GUITest extends JPanel implements MouseListener {
      * and sets MouseListener functionality.
      *
      * */
-    /*
-     * Constructor for the GUITest class. Begins interaction with user by
-     * asking for number of players, taking player names and ages, and creating
-     * the Player objects that are needed to run the driver. Deals starting hand to
-     * each player as well.
-     *
-     * Begins actual graphics by creating the frame that the panels sits upon,
-     * and sets MouseListener functionality.
-     *
-     * */
+
     public GUITest() {
 
         //       ask user to enter the number of players
@@ -176,7 +160,8 @@ public class GUITest extends JPanel implements MouseListener {
      * */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawLine(0,0,100,100);
+        g.drawLine(10,10,200,200);
+
     }
 
     /*
@@ -369,7 +354,7 @@ public class GUITest extends JPanel implements MouseListener {
             //figure out which route they want
             desired = findRoute(location1, location2);
 
-            //if they entered an invalid route, return without moving to the next player
+            //if they entered an invalid route, return false
             if(desired == null){
                 JOptionPane.showMessageDialog(frame, "That's not a route!");
                 return false;
@@ -463,18 +448,57 @@ public class GUITest extends JPanel implements MouseListener {
         //  way to do it for more than 2
         if(!canPay(desired, blue, gray, green, orange, pink, red, rainbow)){
             JOptionPane.showMessageDialog(frame, "Transaction denied.");
-            //skip ahead
 
-            //NEEDS FIXIN'
             return false;
         }
 
-        //  NEEDS FIXING: currently prints that the user can claim the route
-        //  but needs to actually call appropriate methods to add the route to
-        //  the player's possession
-        else{
-            JOptionPane.showMessageDialog(frame, "You have successfully claimed this route!");
+        //  since the user can pay, complete transaction
+        else {
+            //  remove offered cards from player's hand
+            takePayment(p, blue, gray, green, orange, pink, red, rainbow);
+            //  remove necessary number of taxis
+            p.deductTaxis(desired.getRecTaxis());
+            //  adds route to player's possession
+            p.addRoute(desired);
+            //  removes route from list of available routes
+            driver.removeRoute(desired);
+            JOptionPane.showMessageDialog(frame, "You have successfully claimed the route!");
+
+            //repaint
+            //background panel
+            JPanel panel2 = new JPanel();
+            panel2.setBackground(Color.white);
+            panel2.setPreferredSize(new Dimension(1000, 800));
+            //  this allows you to use the border layout with 5 regions
+            panel2.setLayout(new BorderLayout());
+
+
+            //center board panel
+            game = boardPanel();
+            //left side panel
+            left = leftPanel();
+
+            //top panel
+            top = topPanel();
+            //bottom panel
+            bottom = bottomPanel();
+            //right panel
+            right = rightPanel();
+
+            //  adds panels to the frame
+            panel2.add(game, BorderLayout.CENTER);
+            panel2.add(right, BorderLayout.EAST);
+            panel2.add(bottom, BorderLayout.SOUTH);
+            panel2.add(top, BorderLayout.NORTH);
+            panel2.add(left, BorderLayout.WEST);
+
+            //  adds big panel to the frame
+            frame.getContentPane().add(panel2);
+            //  revalidates the panels (I'm not sure if this is necessary)
+            frame.validate();
+
             return true;
+
         }
 
     }
@@ -586,6 +610,7 @@ public class GUITest extends JPanel implements MouseListener {
      * Called when the user chooses to draw a destination card. Offers two cards
      * and allows the user to pick choice 1, 2, or both. Adds to their hand and
      * discards unwanted cards (if any).
+     *
      * */
     public boolean drawDest() {
         //  get current player
@@ -623,6 +648,7 @@ public class GUITest extends JPanel implements MouseListener {
      * face up card or a face down card. If the user picks a face up taxi card, their
      * turn is over. They can't pick a face up taxi on their second choice. Adds the
      * selected cards to their hand.
+     *
      * */
     public boolean drawTrans(){
         //  gets user's decision for first card draw
@@ -644,7 +670,8 @@ public class GUITest extends JPanel implements MouseListener {
                 }
             }
             else {
-                return false;
+                JOptionPane error = new JOptionPane("Invalid choice.");
+
             }
         }
 
@@ -708,6 +735,7 @@ public class GUITest extends JPanel implements MouseListener {
                     }
                 }
                 catch (NumberFormatException e) {
+
                     //JOptionPane.showMessageDialog(null, "Error: Enter a number");
                     return false;
                 }
