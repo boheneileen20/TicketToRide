@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * Class that holds the necessary data for a player in the game.
  *
- * @author Greg MacGown
+ * @author Greg MacGown, Eileen Bohen
  * @version 1.0
  */
 public class Player {

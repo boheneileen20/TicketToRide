@@ -349,6 +349,8 @@ public class TTRDriver {
         ArrayList<DestinationCard> result = new ArrayList<>();
         result.add(choice1);
         result.add(choice2);
+        destCards.remove(0);
+        destCards.remove(1);
         return result;
     }
 
@@ -363,25 +365,21 @@ public class TTRDriver {
         if(playersChoice.equals("1")){
             //add card to hand, remove that card from deck
             p.addToDestHand(choices.get(0));
-            //remove then re-add discarded card so that it is at the bottom of the deck
-            destCards.remove(1);
+            //add the other card back into the deck
             destCards.add(choices.get(1));
-            //remove chosen card from deck
-            destCards.remove(0);
+            //reshuffle
+            Collections.shuffle(destCards);
         }
         else if(playersChoice.equals("2")){
             p.addToDestHand(choices.get(1));
-            //remove chosen card from deck
-            destCards.remove(1);
-            //remove the re-add discarded card
-            destCards.remove(0);
+            //add other card back into deck
             destCards.add(choices.get(0));
+            Collections.shuffle(destCards);
         }
         else if(playersChoice.equals("both")){
             p.addToDestHand(choices.get(0));
             p.addToDestHand(choices.get(1));
-            destCards.remove(0);
-            destCards.remove(1);
+            Collections.shuffle(destCards);
         }
     }
 

@@ -148,7 +148,6 @@ public class GUITest extends JPanel implements MouseListener {
                     error.showMessageDialog(null, "Please enter a valid choice");
                 }
             }
-            validChoice = false;
             driver.dealInitialDestCardsGUI(playerChoice, choices, p);
         }
 
