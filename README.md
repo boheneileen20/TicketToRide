@@ -19,7 +19,8 @@ or click on the transport cards to the right to draw from the table. <br/>
 7)If the player wants to draw a destination card, they can click on the cards to the right <br/>
 to draw 2 cards. The user can enter either "1", "2", or "both" to draw destination cards. <br/>
 8)If the player wants to take a route, they can type in the first destination. Then<br/>
-type in the second destination. <br/>
+type in the second destination. If the route is a double route, a prompt will appear<br/>
+where the user can enter the color of the route they want.<br/>
 9)Steps 5-7 then repeat for the next person. <br/>
 10)If a player has 2 or less taxis, the game plays for 1 more round. <br/>
 11) Once the game ends, the scores are calculated based on routes, tourist attractions, and <br/>
