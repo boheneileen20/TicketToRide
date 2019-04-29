@@ -111,11 +111,22 @@ public class GUITest extends JPanel implements MouseListener {
         }
         driver = new TTRDriver(numPlayers);
 
+        boolean validName = false;
         boolean validAge = false;
         int age = 0;
         //loop until valid age is given
         for (int i = 1; i <= numPlayers; i++) {
-            String name = JOptionPane.showInputDialog("Enter player " + i + "'s name.");
+            validName = false;
+            String name = "";
+            while(!validName) {
+                name = JOptionPane.showInputDialog("Enter player " + i + "'s name.");
+                if (name.length() != 0) {
+                    validName = true;
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Error: Name can't be nothing");
+                }
+            }
             name = name.trim();
             while (!validAge) {
                 //if age is invalid, retry and reset the boolean to false
@@ -1172,11 +1183,6 @@ public class GUITest extends JPanel implements MouseListener {
         JLabel rainbowLabel = new JLabel("Rainbows: " + driver.getPlayers().get(driver.getPlayerTurn()).getNumColor("Rainbow"));
         rainbowLabel.setFont(new Font("Calibri", 1, 15));
 
-        //  label with ImageIcon for dest draw pile
-        Image destDraw = toolkit.getImage("fwdboardandtransport/destination_card_back.jpg");
-        destDraw = destDraw.getScaledInstance(200, 100, 0);
-        JLabel destDrawPile = new JLabel(new ImageIcon(destDraw));
-
         //score panel, contains num taxis, dest card button, and tourist attractions connected to (NEEDS TO BE ADDED: TOURIST ATTRACTIONS)
         JPanel scorePanel = new JPanel();
         scorePanel.setSize(new Dimension(200, 100));
@@ -1227,11 +1233,30 @@ public class GUITest extends JPanel implements MouseListener {
         scorePanel.add(touristLabel);
         scorePanel.setBorder(new LineBorder(Color.BLACK));
 
+        // add new panel for routes claimed
+        // label for claimed routes
+        JPanel routePanel = new JPanel();
+        routePanel.setSize(new Dimension(200, 500));
+        routePanel.setBackground(Color.WHITE);
+        JLabel routeLabel = new JLabel("Routes Claimed:");
+        routeLabel.setFont(new Font("Calibri", 1, 15));
+        routePanel.setLayout(new GridLayout(10, 1));
+        routePanel.add(routeLabel);
+
         //  add labels for each attraction connected to
         for(Location loc : driver.getPlayers().get(driver.getPlayerTurn()).getConTourist()){
             JLabel locationLabel = new JLabel(loc.getName());
             locationLabel.setFont(new Font("Calibri", 1, 15));
             scorePanel.add(locationLabel);
+        }
+        
+        // add claimed routes to side panel
+        for(Route r : driver.getPlayers().get(driver.getPlayerTurn()).getRoutes()){
+            String routeName1 = r.getLoc1().getName();
+            String routeName2 = r.getLoc2().getName();
+            JLabel routeNameLabel = new JLabel(routeName1 + " to " + routeName2);
+            routeNameLabel.setFont(new Font("Calibri", 1, 15));
+            routePanel.add(routeNameLabel);
         }
 
         //  add a label for the route score points
@@ -1260,7 +1285,7 @@ public class GUITest extends JPanel implements MouseListener {
         //  add all three panels to main panel
         p.add(transCardHandPanel);
         p.add(scorePanel);
-        p.add(destDrawPile);
+        p.add(routePanel);
 
         //  return main panel
         return p;
