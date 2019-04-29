@@ -1,4 +1,3 @@
-package src;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -61,7 +60,6 @@ public class GUITest extends JPanel implements MouseListener {
     boolean turnOver;
 
 
-
     /*
      * Constructor for the GUITest class. Begins interaction with user by
      * asking for number of players, taking player names and ages, and creating
@@ -74,7 +72,7 @@ public class GUITest extends JPanel implements MouseListener {
      * */
 
     public GUITest() {
-        
+
         //       ask user to enter the number of players
         boolean validPlayer = false;
         int numPlayers = 0;
@@ -96,11 +94,22 @@ public class GUITest extends JPanel implements MouseListener {
         }
         driver = new TTRDriver(numPlayers);
 
+        boolean validName = false;
         boolean validAge = false;
         int age = 0;
         //loop until valid age is given
         for (int i = 1; i <= numPlayers; i++) {
-            String name = JOptionPane.showInputDialog("Enter player " + i + "'s name.");
+            validName = false;
+            String name = "";
+            while (!validName) {
+                name = JOptionPane.showInputDialog("Enter player " + i + "'s name.");
+                if (name.length()!=0) {
+                    validName = true;
+                }
+                else {
+                    JOptionPane.showMessageDialog(null,"Error: Name can't be nothing");
+                }
+            }
             name = name.trim();
             while (!validAge) {
                 //if age is invalid, retry and reset the boolean to false
@@ -221,7 +230,7 @@ public class GUITest extends JPanel implements MouseListener {
         frame.setVisible(true);
 
     }
-    
+
     public void endGame() {
         JOptionPane.showMessageDialog(frame,"Everyone has one turn left!");
         driver.nextPlayersTurn();
@@ -249,9 +258,9 @@ public class GUITest extends JPanel implements MouseListener {
             }
         }
         JOptionPane.showMessageDialog(frame,win.getName() + " has won the game with a score of "
-        + max + " points!");
+            + max + " points!");
     }
-    
+
     /*
      * Completes a players turn. User can draw transportation cards,
      * destination cards, or claim a route.
@@ -1147,25 +1156,25 @@ public class GUITest extends JPanel implements MouseListener {
         //  action listener for destination card button
         seeRoutes.addActionListener(new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
 
-                //  creates a pop up window listing unclaimed routes
-                //make scrolling panel with images of destination cards on it
-                JPanel routePanel = new JPanel();
-                routePanel.setSize(new Dimension(200, 150));
-                routePanel.setLayout(new GridLayout(30, 1));
-                //get each available route
-                for (Route r: driver.getRoutes()){
-                    JLabel route = new JLabel(r.getLoc1().getName() + " to " + r.getLoc2().getName() + "\n");
-                    routePanel.add(route);
+                    //  creates a pop up window listing unclaimed routes
+                    //make scrolling panel with images of destination cards on it
+                    JPanel routePanel = new JPanel();
+                    routePanel.setSize(new Dimension(200, 150));
+                    routePanel.setLayout(new GridLayout(30, 1));
+                    //get each available route
+                    for (Route r: driver.getRoutes()){
+                        JLabel route = new JLabel(r.getLoc1().getName() + " to " + r.getLoc2().getName() + "\n");
+                        routePanel.add(route);
+                    }
+                    // add to the scrolling panel the panel with the images
+                    JScrollPane scroll = new JScrollPane(routePanel);
+                    //show panel
+                    JOptionPane.showMessageDialog(frame, scroll, "These routes are available", JOptionPane.INFORMATION_MESSAGE);
                 }
-                // add to the scrolling panel the panel with the images
-                JScrollPane scroll = new JScrollPane(routePanel);
-                //show panel
-                JOptionPane.showMessageDialog(frame, scroll, "These routes are available", JOptionPane.INFORMATION_MESSAGE);
-            }
-        });
+            });
 
         //  button to see the available routes left
         JButton seeClaimedRoutes= new JButton("See your claimed routes");
@@ -1174,26 +1183,25 @@ public class GUITest extends JPanel implements MouseListener {
         //  action listener for destination card button
         seeClaimedRoutes.addActionListener(new ActionListener() {
 
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
+                @Override
+                public void actionPerformed(ActionEvent arg0) {
 
-                //  creates a pop up window listing unclaimed routes
-                //make scrolling panel with images of destination cards on it
-                JPanel routePanel = new JPanel();
-                routePanel.setSize(new Dimension(200, 150));
-                routePanel.setLayout(new GridLayout(30, 1));
-                //get each available route
-                for (Route r: driver.getPlayers().get(driver.getPlayerTurn()).getRoutes()){
-                    JLabel route = new JLabel(r.getLoc1().getName() + " to " + r.getLoc2().getName() + "\n");
-                    routePanel.add(route);
+                    //  creates a pop up window listing unclaimed routes
+                    //make scrolling panel with images of destination cards on it
+                    JPanel routePanel = new JPanel();
+                    routePanel.setSize(new Dimension(200, 150));
+                    routePanel.setLayout(new GridLayout(30, 1));
+                    //get each available route
+                    for (Route r: driver.getPlayers().get(driver.getPlayerTurn()).getRoutes()){
+                        JLabel route = new JLabel(r.getLoc1().getName() + " to " + r.getLoc2().getName() + "\n");
+                        routePanel.add(route);
+                    }
+                    // add to the scrolling panel the panel with the images
+                    JScrollPane scroll = new JScrollPane(routePanel);
+                    //show panel
+                    JOptionPane.showMessageDialog(frame, scroll, "You've claimed these routes", JOptionPane.INFORMATION_MESSAGE);
                 }
-                // add to the scrolling panel the panel with the images
-                JScrollPane scroll = new JScrollPane(routePanel);
-                //show panel
-                JOptionPane.showMessageDialog(frame, scroll, "You've claimed these routes", JOptionPane.INFORMATION_MESSAGE);
-            }
-        });
-
+            });
 
         //  add panel with text panel to main panel
         p.add(panel);
@@ -1215,7 +1223,6 @@ public class GUITest extends JPanel implements MouseListener {
         jLabel.setFont(new Font("Calibri", 1, 15));
         panel.add(jLabel, BorderLayout.WEST);
         panel.setBorder(new LineBorder(Color.BLACK));
-
 
         p.add(panel);
         return p;
@@ -1381,7 +1388,6 @@ public class GUITest extends JPanel implements MouseListener {
         scorePanel.add(routeScore);
 
 
-
         //  add panels to top panel
         transCardHandPanel.add(nameLabel);
         transCardHandPanel.add(bluePile);
@@ -1404,7 +1410,7 @@ public class GUITest extends JPanel implements MouseListener {
         //  add all three panels to main panel
         p.add(transCardHandPanel);
         p.add(scorePanel);
-       // p.add(destDrawPile);
+        // p.add(destDrawPile);
 
         //  return main panel
         return p;
