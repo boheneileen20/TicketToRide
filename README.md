@@ -5,7 +5,7 @@ most points wins the game. To get points the player has to
 connect routes using taxis, connecting 2 destinations from 
 destination cards, or connecting tourist attractions.
 
-Directions:
+Directions:</br>
 1)Run the main method of the GUI.java  in BlueJ. <br/>
 2)Type the amount of players in the game(1-5).<br/>
 3)For each player, enter their name and age.<br/>
