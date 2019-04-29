@@ -167,7 +167,8 @@ public class TTRDriver {
                 locations.get(2),locations.get(9),
                 toolkit.getImage(path1 + "times_east_4.jpg"));
         DestinationCard timesSoho6 =  new  DestinationCard(6,
-                locations.get(2),locations.get(10), toolkit.getImage(path1 + "times_soho_6.jpg"));
+                locations.get(2),locations.get(10), 
+                toolkit.getImage(path1 + "times_soho_6.jpg"));
         DestinationCard UNWall8 =  new  DestinationCard(8, locations.get(4), 
                 locations.get(13), toolkit.getImage(path1 + "UN_wall_8.jpg"));
 
