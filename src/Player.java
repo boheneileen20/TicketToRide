@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * @author Greg MacGown
  * @version 1.0
  */
+
 public class Player
 {
     /**
@@ -43,6 +44,15 @@ public class Player
      * 
      * @param name The player's name.
      * @param age The player's age.
+
+    //  tourist attractions connected to
+    private ArrayList<Location> tourist = new ArrayList<>();
+    //  score for routes claimed
+    private int routeScore;
+    // score for dests
+    private int destScore;
+    //final score
+    private int finalScore;
      */
     public Player(String name, int age) {
         this.name = name;
@@ -234,6 +244,22 @@ public class Player
      */
     public void addScore(int points) {
         score += points;
+    }
+    
+    public void calcFinalScore(){
+        finalScore = destScore + routeScore;
+    }
+    
+    public int getFinalScore(){
+        return finalScore;
+    }
+    
+    public int getDestScore() {
+        return destScore;
+    }
+    
+    public void addDestScore(int num) {
+        destScore += num;
     }
 
     /**

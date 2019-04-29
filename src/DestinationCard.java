@@ -81,8 +81,10 @@ public class DestinationCard
      * @return The info of the destination.
      */
     public String toString(){
+
         String message = dest1 + " to " + dest2;
         message += " for " + num + " points.";
+
         return message;
 
     }
