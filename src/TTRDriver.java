@@ -143,24 +143,24 @@ public class TTRDriver {
      * */
     public void readCardImages(){
         /* read in destination card images and save them in an arraylist*/
-        DestinationCard centralChelsea5 =  new  DestinationCard(5, locations.get(1), locations.get(6), toolkit.getImage("src/fwdboardandtransport/central_chelsea_5.jpg"));
-        DestinationCard centralChina8 =  new  DestinationCard(8, locations.get(1), locations.get(12), toolkit.getImage("src/fwdboardandtransport/central_china_8.jpg"));
-        DestinationCard centralGramercy4 =  new  DestinationCard(4, locations.get(1), locations.get(7), toolkit.getImage("src/fwdboardandtransport/central_gramercy_4.jpg"));
-        DestinationCard centralMidtown3 =  new  DestinationCard(3, locations.get(1), locations.get(3), toolkit.getImage("src/fwdboardandtransport/central_midtown_3.jpg"));
-        DestinationCard chelseaBrooklyn8 =  new  DestinationCard(8, locations.get(6), locations.get(14), toolkit.getImage("src/fwdboardandtransport/chelsea_brooklyn_8.jpg"));
-        DestinationCard chelseaWall6 =  new  DestinationCard(6, locations.get(6), locations.get(13), toolkit.getImage("src/fwdboardandtransport/chelsea_wall_6.jpg"));
-        DestinationCard chinaGramercy4 =  new  DestinationCard(4, locations.get(12), locations.get(7), toolkit.getImage("src/fwdboardandtransport/china_gramercy_4.jpg"));
-        DestinationCard eastSoho4 =  new  DestinationCard(4, locations.get(9), locations.get(10), toolkit.getImage("src/fwdboardandtransport/east_soho_4.jpg"));
-        DestinationCard empireBrooklyn7 =  new  DestinationCard(7, locations.get(5), locations.get(14), toolkit.getImage("src/fwdboardandtransport/empire_brooklyn_7.jpg"));
-        DestinationCard empireGreen3 =  new  DestinationCard(3, locations.get(5), locations.get(8), toolkit.getImage("fsrc/wdboardandtransport/empire_green_3.jpg"));
-        DestinationCard lincolnEmpire3 =  new  DestinationCard(3, locations.get(0), locations.get(5), toolkit.getImage("src/fwdboardandtransport/lincoln_empire_3.jpg"));
-        DestinationCard lincolnGreen6 =  new  DestinationCard(6, locations.get(0), locations.get(8), toolkit.getImage("src/fwdboardandtransport/lincoln_geen_6.jpg"));
-        DestinationCard lowerEastWall2 =  new  DestinationCard(2, locations.get(11), locations.get(13), toolkit.getImage("src/fwdboardandtransport/lowerEast_wall_2.jpg"));
-        DestinationCard midWestUN3 =  new  DestinationCard(3, locations.get(3), locations.get(4), toolkit.getImage("src/fwdboardandtransport/midWest_UN_3.jpg"));
-        DestinationCard timesBrooklyn8 =  new  DestinationCard(8, locations.get(2), locations.get(14), toolkit.getImage("src/fwdboardandtransport/times_brooklyn_8.jpg"));
-        DestinationCard timesEast4 =  new  DestinationCard(4, locations.get(2), locations.get(9), toolkit.getImage("src/fwdboardandtransport/times_east_4.jpg"));
-        DestinationCard timesSoho6 =  new  DestinationCard(6, locations.get(2), locations.get(10), toolkit.getImage("src/fwdboardandtransport/times_soho_6.jpg"));
-        DestinationCard UNWall8 =  new  DestinationCard(8, locations.get(4), locations.get(13), toolkit.getImage("src/fwdboardandtransport/UN_wall_8.jpg"));
+        DestinationCard centralChelsea5 =  new  DestinationCard(5, locations.get(1), locations.get(6), toolkit.getImage("fwdboardandtransport/central_chelsea_5.jpg"));
+        DestinationCard centralChina8 =  new  DestinationCard(8, locations.get(1), locations.get(12), toolkit.getImage("fwdboardandtransport/central_china_8.jpg"));
+        DestinationCard centralGramercy4 =  new  DestinationCard(4, locations.get(1), locations.get(7), toolkit.getImage("fwdboardandtransport/central_gramercy_4.jpg"));
+        DestinationCard centralMidtown3 =  new  DestinationCard(3, locations.get(1), locations.get(3), toolkit.getImage("fwdboardandtransport/central_midtown_3.jpg"));
+        DestinationCard chelseaBrooklyn8 =  new  DestinationCard(8, locations.get(6), locations.get(14), toolkit.getImage("fwdboardandtransport/chelsea_brooklyn_8.jpg"));
+        DestinationCard chelseaWall6 =  new  DestinationCard(6, locations.get(6), locations.get(13), toolkit.getImage("fwdboardandtransport/chelsea_wall_6.jpg"));
+        DestinationCard chinaGramercy4 =  new  DestinationCard(4, locations.get(12), locations.get(7), toolkit.getImage("fwdboardandtransport/china_gramercy_4.jpg"));
+        DestinationCard eastSoho4 =  new  DestinationCard(4, locations.get(9), locations.get(10), toolkit.getImage("fwdboardandtransport/east_soho_4.jpg"));
+        DestinationCard empireBrooklyn7 =  new  DestinationCard(7, locations.get(5), locations.get(14), toolkit.getImage("fwdboardandtransport/empire_brooklyn_7.jpg"));
+        DestinationCard empireGreen3 =  new  DestinationCard(3, locations.get(5), locations.get(8), toolkit.getImage("fwdboardandtransport/empire_green_3.jpg"));
+        DestinationCard lincolnEmpire3 =  new  DestinationCard(3, locations.get(0), locations.get(5), toolkit.getImage("fwdboardandtransport/lincoln_empire_3.jpg"));
+        DestinationCard lincolnGreen6 =  new  DestinationCard(6, locations.get(0), locations.get(8), toolkit.getImage("fwdboardandtransport/lincoln_geen_6.jpg"));
+        DestinationCard lowerEastWall2 =  new  DestinationCard(2, locations.get(11), locations.get(13), toolkit.getImage("fwdboardandtransport/lowerEast_wall_2.jpg"));
+        DestinationCard midWestUN3 =  new  DestinationCard(3, locations.get(3), locations.get(4), toolkit.getImage("fwdboardandtransport/midWest_UN_3.jpg"));
+        DestinationCard timesBrooklyn8 =  new  DestinationCard(8, locations.get(2), locations.get(14), toolkit.getImage("fwdboardandtransport/times_brooklyn_8.jpg"));
+        DestinationCard timesEast4 =  new  DestinationCard(4, locations.get(2), locations.get(9), toolkit.getImage("fwdboardandtransport/times_east_4.jpg"));
+        DestinationCard timesSoho6 =  new  DestinationCard(6, locations.get(2), locations.get(10), toolkit.getImage("fwdboardandtransport/times_soho_6.jpg"));
+        DestinationCard UNWall8 =  new  DestinationCard(8, locations.get(4), locations.get(13), toolkit.getImage("fwdboardandtransport/UN_wall_8.jpg"));
 
         //  add to dest cards array (deck)
         destCards.add(centralChelsea5);
@@ -183,20 +183,20 @@ public class TTRDriver {
         destCards.add(UNWall8);
 
         /* read in transportation card images and save them in an arraylist*/
-        TransportationCard blue1 =  new  TransportationCard("BLUE", toolkit.getImage("src/fwdpieces/blue_1.jpg"));
-        TransportationCard blue2 =  new  TransportationCard("BLUE", toolkit.getImage("src/fwdpieces/blue_2.jpg"));
-        TransportationCard gray1 =  new  TransportationCard("GRAY", toolkit.getImage("src/fwdpieces/gray_1.jpg"));
-        TransportationCard gray2 =  new  TransportationCard("GRAY", toolkit.getImage("src/fwdpieces/gray_2.jpg"));
-        TransportationCard green1 =  new  TransportationCard("GREEN", toolkit.getImage("src/fwdpieces/green_1.jpg"));
-        TransportationCard green2 =  new  TransportationCard("GREEN", toolkit.getImage("src/fwdpieces/green_2.jpg"));
-        TransportationCard orange1 =  new  TransportationCard("ORANGE", toolkit.getImage("src/fwdpieces/orange_1.jpg"));
-        TransportationCard orange2 =  new  TransportationCard("ORANGE", toolkit.getImage("src/fwdpieces/orange_2.jpg"));
-        TransportationCard pink1 =  new  TransportationCard("ORANGE", toolkit.getImage("src/fwdpieces/pink_1.jpg"));
-        TransportationCard pink2 =  new  TransportationCard("ORANGE", toolkit.getImage("src/fwdpieces/pink_2.jpg"));
-        TransportationCard rainbow1 =  new  TransportationCard("RAINBOW", toolkit.getImage("src/fwdpieces/rainbow_1.jpg"));
-        TransportationCard rainbow2 =  new  TransportationCard("RAINBOW", toolkit.getImage("src/fwdpieces/rainbow_2.jpg"));
-        TransportationCard red1 =  new  TransportationCard("RED", toolkit.getImage("src/fwdpieces/red_1.jpg"));
-        TransportationCard red2 =  new  TransportationCard("RED", toolkit.getImage("src/fwdpieces/red_2.jpg"));
+        TransportationCard blue1 =  new  TransportationCard("BLUE", toolkit.getImage("fwdpieces/blue_1.jpg"));
+        TransportationCard blue2 =  new  TransportationCard("BLUE", toolkit.getImage("fwdpieces/blue_2.jpg"));
+        TransportationCard gray1 =  new  TransportationCard("GRAY", toolkit.getImage("fwdpieces/gray_1.jpg"));
+        TransportationCard gray2 =  new  TransportationCard("GRAY", toolkit.getImage("fwdpieces/gray_2.jpg"));
+        TransportationCard green1 =  new  TransportationCard("GREEN", toolkit.getImage("fwdpieces/green_1.jpg"));
+        TransportationCard green2 =  new  TransportationCard("GREEN", toolkit.getImage("fwdpieces/green_2.jpg"));
+        TransportationCard orange1 =  new  TransportationCard("ORANGE", toolkit.getImage("fwdpieces/orange_1.jpg"));
+        TransportationCard orange2 =  new  TransportationCard("ORANGE", toolkit.getImage("fwdpieces/orange_2.jpg"));
+        TransportationCard pink1 =  new  TransportationCard("ORANGE", toolkit.getImage("fwdpieces/pink_1.jpg"));
+        TransportationCard pink2 =  new  TransportationCard("ORANGE", toolkit.getImage("fwdpieces/pink_2.jpg"));
+        TransportationCard rainbow1 =  new  TransportationCard("RAINBOW", toolkit.getImage("fwdpieces/rainbow_1.jpg"));
+        TransportationCard rainbow2 =  new  TransportationCard("RAINBOW", toolkit.getImage("fwdpieces/rainbow_2.jpg"));
+        TransportationCard red1 =  new  TransportationCard("RED", toolkit.getImage("fwdpieces/red_1.jpg"));
+        TransportationCard red2 =  new  TransportationCard("RED", toolkit.getImage("fwdpieces/red_2.jpg"));
         /* this arraylist holds the horizontal images*/
         //there are 8 of each of the color cards
         for(int i = 0; i<6; i++) {
