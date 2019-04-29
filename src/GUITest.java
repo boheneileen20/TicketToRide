@@ -169,8 +169,6 @@ public class GUITest extends JPanel implements MouseListener {
      * */
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawLine(10,10,200,200);
-
     }
 
     /*
@@ -1432,7 +1430,7 @@ public class GUITest extends JPanel implements MouseListener {
 
         //  add the board image to the panel
         Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image boardImage = toolkit.getImage("src/fwdboardandtransport/game_board.jpg");
+        Image boardImage = toolkit.getImage("fwdboardandtransport/game_board.jpg");
 
         //  scales image
         boardImage = boardImage.getScaledInstance(650, 675, 0);
