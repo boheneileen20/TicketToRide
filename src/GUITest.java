@@ -31,8 +31,8 @@ import java.util.ArrayList;
  * The final panel is on the bottom. As of now it is not used for anything. 
  * One idea is to implement a button that will bring up the game directions.
  *
- * @Author Eileen Bohen
- * @Version Spring 2019
+ * @author Eileen Bohen
+ * @version Spring 2019
  * */
 public class GUITest extends JPanel implements MouseListener {
     /* Create and set up the window.*/
@@ -94,7 +94,7 @@ public class GUITest extends JPanel implements MouseListener {
                 //if valid number is given, end loop, otherwise, repeat
                 numPlayers = Integer.parseInt(
                     JOptionPane.showInputDialog("How many players?"));
-                if (numPlayers > 1 && numPlayers <= 4) {
+                if (numPlayers > 1 && numPlayers <= 5) {
                     validPlayer = true;
                 } else {
                     JOptionPane error = new JOptionPane("Error");

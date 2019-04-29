@@ -11,8 +11,8 @@ import java.util.Scanner;
  * This class also reads in many images and creates
  * the arraylists that server as the card decks.
  * 
- * Author: Eileen Bohen Greg MacGown
- * Version: Spring 2019
+ * @author Eileen Bohen Greg MacGown
+ * @version Spring 2019
  */
 public class TTRDriver {
     //  ArrayLis of the player in the game
