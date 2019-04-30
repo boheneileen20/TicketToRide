@@ -996,7 +996,15 @@ public class GUITest extends JPanel implements MouseListener {
 
         //  process for blind card (could be put in it's own method)
         if(tCardChoice.equals("blind")){
-            TransportationCard t = driver.getTransDeck().get(0);
+            TransportationCard t;
+            try {
+                t = driver.getTransDeck().get(0);
+            }
+            catch (IndexOutOfBoundsException i) {
+                JOptionPane.showMessageDialog(null, 
+                    "Error: Can't pick more cards");
+                return false;
+            }
             JOptionPane.showMessageDialog(frame, "You have drawn a " +
                 t.getColor() + " card. Your turn is now over.");
             driver.getPlayers().get(driver.getPlayerTurn()).addToTransHand(t);
