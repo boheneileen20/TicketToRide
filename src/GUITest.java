@@ -460,10 +460,10 @@ public class GUITest extends JPanel implements MouseListener {
         while (!isRoute) {
             String location1 = JOptionPane.showInputDialog(frame, 
                     "Enter the first endpoint of the route you'd like" + 
-                    "to claim");
+                    " to claim");
             String location2 = JOptionPane.showInputDialog(frame,
                     "Enter the second endpoint of the route you'd like" +
-                    "to claim");
+                    " to claim");
             if (location1 != null && location2 != null) {
                 location1 = location1.trim();
                 location2 = location2.trim();
@@ -640,44 +640,51 @@ public class GUITest extends JPanel implements MouseListener {
     int orange, int pink, int red, int rainbow) {
         for (int i = 0; i < blue; i++) {
             p.removeFromTransHand("blue");
-            //  add this card back to the trans deck
-            TransportationCard t = new  TransportationCard("GRAY", toolkit.getImage("src/fwdpieces/gray_1.jpg"));
+            //  add this card back to the trans deck		
+            TransportationCard t = new  TransportationCard("GRAY"
+                , toolkit.getImage("src/fwdpieces/gray_1.jpg"));		
             driver.addToTransDeck(t);
         }
         for (int i = 0; i < gray; i++) {
             p.removeFromTransHand("gray");
-            //  add this card back to the trans deck
-            TransportationCard t = new  TransportationCard("BLUE", toolkit.getImage("src/fwdpieces/blue_1.jpg"));
+            //  add this card back to the trans deck		
+            TransportationCard t = new  TransportationCard("BLUE"
+                , toolkit.getImage("src/fwdpieces/blue_1.jpg"));		
             driver.addToTransDeck(t);
         }
         for (int i = 0; i < green; i++) {
             p.removeFromTransHand("green");
             //  add this card back to the trans deck
-            TransportationCard t = new  TransportationCard("GREEN", toolkit.getImage("src/fwdpieces/green_1.jpg"));
+            TransportationCard t = new  TransportationCard("GREEN"
+                , toolkit.getImage("src/fwdpieces/green_1.jpg"));		
             driver.addToTransDeck(t);
         }
         for (int i = 0; i < orange; i++) {
             p.removeFromTransHand("orange");
             //  add this card back to the trans deck
-            TransportationCard t = new  TransportationCard("ORANGE", toolkit.getImage("src/fwdpieces/orange_1.jpg"));
+            TransportationCard t = new  TransportationCard("ORANGE"
+                , toolkit.getImage("src/fwdpieces/orange_1.jpg"));		
             driver.addToTransDeck(t);
         }
         for (int i = 0; i < pink; i++) {
             p.removeFromTransHand("pink");
-            //  add this card back to the trans deck
-            TransportationCard t = new  TransportationCard("PINK", toolkit.getImage("src/fwdpieces/pink_1.jpg"));
+            //  add this card back to the trans deck		
+            TransportationCard t = new  TransportationCard("PINK"
+                , toolkit.getImage("src/fwdpieces/pink_1.jpg"));		
             driver.addToTransDeck(t);
         }
         for (int i = 0; i < red; i++) {
             p.removeFromTransHand("red");
-            //  add this card back to the trans deck
-            TransportationCard t = new  TransportationCard("RED", toolkit.getImage("src/fwdpieces/red_1.jpg"));
+            //  add this card back to the trans deck		
+            TransportationCard t = new  TransportationCard("RED"
+                , toolkit.getImage("src/fwdpieces/red_1.jpg"));		
             driver.addToTransDeck(t);
         }
         for (int i = 0; i < rainbow; i++) {
             p.removeFromTransHand("rainbow");
-            //  add this card back to the trans deck
-            TransportationCard t = new  TransportationCard("RAINBOW", toolkit.getImage("src/fwdpieces/rainbow_1.jpg"));
+            //  add this card back to the trans deck		
+            TransportationCard t = new  TransportationCard("RAINBOW"
+                , toolkit.getImage("src/fwdpieces/rainbow_1.jpg"));		
             driver.addToTransDeck(t);
         }
 
@@ -812,7 +819,8 @@ public class GUITest extends JPanel implements MouseListener {
     /**
      * User can draw a face up card or a face down card.&nbsp; If the user picks 
      * a face up taxi card, their turn is over.&nbsp; They can't pick a face 
-     * up taxi on their second choice.&nbsp; Adds the selected cards to their hand.
+     * up taxi on their second choice.&nbsp; Adds the selected cards to their 
+     * hand.
      *
      * @return true if the player completed the action, false elsewise
      * */
@@ -845,11 +853,12 @@ public class GUITest extends JPanel implements MouseListener {
 
         //  if the user wants a blind draw
         if(tCardChoice.equals("blind")){
-            //if there are no more face down trans cards left, return false
-            if(driver.getTransDeck().size() == 0){
-                JOptionPane.showMessageDialog(frame, "There are no face down cards left! Try something else.");
-                return false;
-            }
+            //if there are no more face down trans cards left, return false		
+            if(driver.getTransDeck().size() == 0){		
+                JOptionPane.showMessageDialog(frame, 
+                    "There are no face down cards left! Try something else.");		
+                return false;		
+            }		
 
             //  gets transportation from top of deck in driver
             TransportationCard t = driver.getTransDeck().get(0);
@@ -1025,31 +1034,41 @@ public class GUITest extends JPanel implements MouseListener {
         if(tCardChoice.equals("blind")){
             //if there are no more face down trans cards left, return false
             if(driver.getTransDeck().size() == 0){
-                JOptionPane.showMessageDialog(frame, "There are no face down cards left! Take a face up card instead.");
+                JOptionPane.showMessageDialog(frame, "There are no face down" +
+                "cards left! Take a face up card instead.");
                 //loops until 1, 2, 3, 4, 5 is given
                 int faceChoice = 0;
                 validChoice = false;
                 while (!validChoice) {
                     try {
-                        faceChoice = Integer.parseInt(JOptionPane.showInputDialog(frame, "Enter 1,2,3,4, or 5 to draw that face up card."));
+                        faceChoice = Integer.parseInt(JOptionPane.
+                        showInputDialog(frame, "Enter 1,2,3,4, or 5" +
+                        "to draw that face up card."));
                         if (faceChoice >= 1 && faceChoice <= 5) {
                             validChoice = true;
                         }
                         else {
-                            JOptionPane.showMessageDialog(null, "Enter a valid choice");
+                            JOptionPane.showMessageDialog(null, "Enter a" +
+                            "valid choice");
                         }
                     }
                     catch (NumberFormatException e) {
-                        JOptionPane.showMessageDialog(null, "Error: Enter a number");
+                        JOptionPane.showMessageDialog(null, "Error: Enter" +
+                        "a number");
                         //return false;
                     }
                 }
-                //add choice to player hand and remove from display, replacing with top card on deck
-                TransportationCard t = driver.getDisplayTransCards().get(faceChoice-1);
-                driver.getPlayers().get(driver.getPlayerTurn()).addToTransHand(t);
+                //add choice to player hand and remove from display, 
+                //replacing with top card on deck
+                TransportationCard t = driver.getDisplayTransCards().
+                get(faceChoice-1);
+                driver.getPlayers().get(driver.getPlayerTurn()).
+                addToTransHand(t);
 
-                //replace taken card with top card in deck, remove top card from deck
-                driver.setDisplayTransCards(faceChoice-1, driver.getTransDeck().get(0));
+                //replace taken card with top card in deck, 
+                //remove top card from deck
+                driver.setDisplayTransCards(faceChoice-1, 
+                driver.getTransDeck().get(0));
                 driver.removeFromTransDeck(0);
 
                 //check that five cards don't contain more than 3 rainbow cards
@@ -1059,7 +1078,8 @@ public class GUITest extends JPanel implements MouseListener {
 
                 //if player chose a taxi, return
                 /*
-                 * NEEDS FIXING: (i think) so that the player can choose again if they pick rainbow on the second draw
+                 * NEEDS FIXING: (i think) so that the player can 
+                 * //choose again if they pick rainbow on the second draw
                  * */
                 if(t.getColor().equals("RAINBOW")){
 
@@ -1124,7 +1144,8 @@ public class GUITest extends JPanel implements MouseListener {
             }
 
             TransportationCard t = driver.getTransDeck().get(0);
-            JOptionPane.showMessageDialog(frame, "You have drawn a " + t.getColor() + " card. Your turn is now over.");
+            JOptionPane.showMessageDialog(frame, "You have drawn a " + 
+            t.getColor() + " card. Your turn is now over.");
 
             driver.getPlayers().get(driver.getPlayerTurn()).addToTransHand(t);
             driver.removeFromTransDeck(0);
@@ -1161,7 +1182,6 @@ public class GUITest extends JPanel implements MouseListener {
 
         //   second face draw
         else if(tCardChoice.equals("face")){
-
             //loops until 1, 2, 3, 4, 5 is given
             int faceChoice = 0;
             validChoice = false;
@@ -1355,7 +1375,8 @@ public class GUITest extends JPanel implements MouseListener {
     }
 
     /**
-     * Creates the bottom panel (used only for "Ticket to Ride" label currently).
+     * Creates the bottom panel 
+     * (used only for "Ticket to Ride" label currently).
      *
      * @return   a Panel with the label "Ticket to Ride"
      * */
