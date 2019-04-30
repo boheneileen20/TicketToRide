@@ -236,9 +236,9 @@ public class TTRDriver {
                 toolkit.getImage(path2 + "orange_1.jpg"));
         TransportationCard orange2 =  new  TransportationCard("ORANGE",
                 toolkit.getImage(path2 + "orange_2.jpg"));
-        TransportationCard pink1 =  new  TransportationCard("ORANGE",
+        TransportationCard pink1 =  new  TransportationCard("PINK",
                 toolkit.getImage(path2 + "pink_1.jpg"));
-        TransportationCard pink2 =  new  TransportationCard("ORANGE",
+        TransportationCard pink2 =  new  TransportationCard("PINK",
                 toolkit.getImage(path2 + "pink_2.jpg"));
         TransportationCard rainbow1 =  new  TransportationCard("RAINBOW",
                 toolkit.getImage(path2 + "rainbow_1.jpg"));
