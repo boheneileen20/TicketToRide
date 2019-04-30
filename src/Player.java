@@ -102,7 +102,8 @@ public class Player {
         //loop through until card is found and remove
         while (!found) {
             for (int i = 0; i < transHand.size(); i++) {
-                if (transHand.get(i).getColor().equalsIgnoreCase(color)) {
+                if (transHand.get(i).getColor().equalsIgnoreCase(color) 
+                && !found) {
                     transHand.remove(i);
                     found = true;
                 }
