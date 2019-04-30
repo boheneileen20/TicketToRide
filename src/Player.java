@@ -51,6 +51,10 @@ public class Player {
      */
     private int destScore;
     /**
+     * The score for the tourist attractions.
+     */
+    private int tourScore;
+    /**
      * The final score.
      */
     private int finalScore;
@@ -64,7 +68,7 @@ public class Player {
     public Player(String name, int age) {
         this.name = name;
         this.age = age;
-        taxis = 15;
+        taxis = 4;
         //Initialize hand to empty
         transHand = new ArrayList<TransportationCard>();
         destHand = new ArrayList<DestinationCard>();
@@ -190,11 +194,13 @@ public class Player {
         if(loc1.getTourist()){
             if(!tourist.contains(loc1)){
                 tourist.add(loc1);
+                tourScore++;
             }
         }
         if(loc2.getTourist()){
             if(!tourist.contains(loc2)){
                 tourist.add(loc2);
+                tourScore++;
             }
         }
 
@@ -287,13 +293,22 @@ public class Player {
     public int getRouteScore(){
         return routeScore;
     }
+    
+    /**
+     * Method to get current route score.
+     * 
+     * @return The current score from routes.
+     */
+    public int getTourScore(){
+        return tourScore;
+    }
 
     /**
      * Method to calculate final score.
      * 
      */
     public void calcFinalScore(){
-        finalScore = destScore + routeScore;
+        finalScore = destScore + routeScore + tourScore;
     }
 
     /**
