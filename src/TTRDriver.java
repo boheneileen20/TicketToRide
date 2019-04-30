@@ -224,10 +224,10 @@ public class TTRDriver {
                 toolkit.getImage(path2 + "blue_1.jpg"));
         TransportationCard blue2 =  new  TransportationCard("BLUE",
                 toolkit.getImage(path2 + "blue_2.jpg"));
-        TransportationCard gray1 =  new  TransportationCard("GRAY",
-                toolkit.getImage(path2 + "gray_1.jpg"));
-        TransportationCard gray2 =  new  TransportationCard("GRAY",
-                toolkit.getImage(path2 + "gray_2.jpg"));
+        TransportationCard black1 =  new  TransportationCard("black",
+                toolkit.getImage(path2 + "black_1.jpg"));
+        TransportationCard black2 =  new  TransportationCard("black",
+                toolkit.getImage(path2 + "black_2.jpg"));
         TransportationCard green1 =  new  TransportationCard("GREEN",
                 toolkit.getImage(path2 + "green_1.jpg"));
         TransportationCard green2 =  new  TransportationCard("GREEN",
@@ -253,7 +253,7 @@ public class TTRDriver {
         //there are 8 of each of the color cards
         for(int i = 0; i<6; i++) {
             transCards.add(blue1);
-            transCards.add(gray1);
+            transCards.add(black1);
             transCards.add(green1);
             transCards.add(orange1);
             transCards.add(pink1);
@@ -266,7 +266,7 @@ public class TTRDriver {
         /* this arraylist holds the vertical images*/
 
         transCardsUpright.add(blue2);
-        transCardsUpright.add(gray2);
+        transCardsUpright.add(black2);
         transCardsUpright.add(green2);
         transCardsUpright.add(orange2);
         transCardsUpright.add(pink2);
@@ -792,7 +792,7 @@ public class TTRDriver {
         Route lincolnMidtown = new Route(locations.get(0),
                 locations.get(3), "red 2");
         Route centralTimes = new Route(locations.get(1),
-                locations.get(2), "gray 2");
+                locations.get(2), "black 2");
         Route centralTimes2 = new Route(locations.get(1),
                 locations.get(2), "red 2");
         Route centralUN = new Route(locations.get(1),
@@ -806,11 +806,11 @@ public class TTRDriver {
         Route midtownTimes = new Route(locations.get(3),
                 locations.get(2), "white 1");
         Route midtownEmpire = new Route(locations.get(3),
-                locations.get(5), "gray 2");
+                locations.get(5), "green 2");
         Route midtownChelsea = new Route(locations.get(3),
                 locations.get(6), "blue 2");
         Route unEmpire = new Route(locations.get(4), 
-                locations.get(5), "gray 2");
+                locations.get(5), "black 2");
         Route unGramercy = new Route(locations.get(4), 
                 locations.get(7), "green 3");
         Route chelseaEmpire = new Route(locations.get(6),
@@ -832,7 +832,7 @@ public class TTRDriver {
         Route gramercyEast = new Route(locations.get(7),
                 locations.get(9), "white 2");
         Route gramercyGreen = new Route(locations.get(7),
-                locations.get(8), "gray 2");
+                locations.get(8), "black 2");
         Route gramercyGreen2 = new Route(locations.get(7),
                 locations.get(8), "pink 2");
         Route greenEastVill = new Route(locations.get(8),
@@ -846,7 +846,7 @@ public class TTRDriver {
         Route greenLowerEast = new Route(locations.get(8),
                 locations.get(11), "white 2");
         Route eastVillLowerEast = new Route(locations.get(9),
-                locations.get(11), "gray 1");
+                locations.get(11), "black 1");
         Route sohoWall = new Route(locations.get(10),
                 locations.get(13), "white 2");
         Route lowerEastBrooklyn = new Route(locations.get(11),
@@ -862,7 +862,7 @@ public class TTRDriver {
         Route chinaBrooklyn2  = new Route(locations.get(12),
                 locations.get(14), "red 3");
         Route wallBrooklyn = new Route(locations.get(13),
-                locations.get(14), "gray 3");
+                locations.get(14), "black 3");
         Route wallBrooklyn2 = new Route(locations.get(13),
                 locations.get(14), "blue 3");
 
