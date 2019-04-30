@@ -15,27 +15,52 @@ import java.util.Scanner;
  * @version Spring 2019
  */
 public class TTRDriver {
-    //  ArrayLis of the player in the game
+    /**  
+     * ArrayList of the player in the game
+     */
     private ArrayList<Player> players = new ArrayList<>();
-    //  arraylist of locations on the board
+    /**
+     * ArrayList of locations on the board
+     */  
     private ArrayList<Location> locations = new ArrayList<>();
-    //  arraylist of routes on the board
+    /**
+     * ArrayList of routes on the board
+     */
     private ArrayList<Route> routes = new ArrayList<>();
-    /* array of destination cards that make up the deck*/
+    /**
+     * array of destination cards that make up the deck
+     */
     private ArrayList<DestinationCard> destCards =  new  ArrayList <  > ();
-    /* array of transportation cards with horizontal images*/
+    /**
+     * array of transportation cards with horizontal images
+     */
     private ArrayList<TransportationCard> transCards =  new  ArrayList <  > ();
-    /* array of transportation cards with vertical images, to be used when displaying a player's hand*/
-    private ArrayList<TransportationCard> transCardsUpright =  new  ArrayList <  > ();
-    /* array of transportation cards that make up the deck*/
-    private ArrayList<TransportationCard> displayTransCards =  new  ArrayList <  > ();
-    /* Toolkit used for grabbing Images*/
+    /**
+     * array of transportation cards with vertical images, to be used when 
+     * displaying a player's hand
+     */
+    private ArrayList<TransportationCard> transCardsUpright =
+        new  ArrayList <  > ();
+    /**
+     * array of transportation cards that make up the deck
+     */
+    private ArrayList<TransportationCard> displayTransCards =
+        new  ArrayList <  > ();
+    /**
+     * Toolkit used for grabbing Images
+     */
     private Toolkit toolkit;
-    //  the number of players in the game
+    /**
+     * the number of players in the game
+     */
     private int numPlayers;
-    //  the index of the current Player in the players AL
+    /**
+     * the index of the current Player in the players AL
+     */
     private int playerTurn;
-    //  true if game is over
+    /**
+     * true if game is over
+     */
     private boolean gameOver;
 
     /**
@@ -65,7 +90,8 @@ public class TTRDriver {
     }
 
     /**
-     * Changes playerTurn (index of current Player in players AL) to the next player
+     * Changes playerTurn (index of current Player in players AL) 
+     * to the next player
      * */
     public void nextPlayersTurn(){
         if(playerTurn<numPlayers-1){
@@ -171,7 +197,6 @@ public class TTRDriver {
                 toolkit.getImage(path1 + "times_soho_6.jpg"));
         DestinationCard UNWall8 =  new  DestinationCard(8, locations.get(4), 
                 locations.get(13), toolkit.getImage(path1 + "UN_wall_8.jpg"));
-
 
         //  add to dest cards array (deck)
         destCards.add(centralChelsea5);
@@ -369,7 +394,7 @@ public class TTRDriver {
         Collections.shuffle(destCards);
     }
 
-    /*
+    /**
      * Draws to destination cards from the top of the pile
      *
      * @return ArrayList of destination card objects that were drawn
