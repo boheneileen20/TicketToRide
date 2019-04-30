@@ -1041,7 +1041,7 @@ public class GUITest extends JPanel implements MouseListener {
 
             TransportationCard t = driver.getTransDeck().get(0);
             JOptionPane.showMessageDialog(frame, "You have drawn a " + 
-            t.getColor() + " card. Your turn is now over.");
+                t.getColor() + " card. Your turn is now over.");
 
             driver.getPlayers().get(driver.getPlayerTurn()).addToTransHand(t);
             driver.removeFromTransDeck(0);
@@ -1081,6 +1081,11 @@ public class GUITest extends JPanel implements MouseListener {
             //loops until 1, 2, 3, 4, 5 is given
             int faceChoice = 0;
             validChoice = false;
+            if(driver.getTransDeck().size() == 0){
+                JOptionPane.showMessageDialog(frame, "There are no face down cards left! Try something else.");
+                return false;
+
+            }
             while (!validChoice) {
                 try {
                     faceChoice = Integer.parseInt(JOptionPane.showInputDialog(
