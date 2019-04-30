@@ -1,29 +1,31 @@
 import java.util.ArrayList;
 /**
- * Class to encapsulate information about the routes between adjacent locations that can be used to build a continuous
- * path between attractions.
+ * Encapsulate information about the routes to build a path.
  *
  * @author Eileen Bohen
  * @version Spring 2019
  */
 public class Route
 {
-    //location 1
+    /**
+     * The first location.
+     */
     Location loc1;
-    //location 2
+    /**
+     * The second location.
+     */
     Location loc2;
-
-    //each string is formatted as "color number"
-    //for example, if four pink cards are needed, 
-    //the entry is "pink 4"
+    /**
+     * Each string is formatted as "color number".
+     */
     String requirement;
 
-    
     /**
-     * Constructor for Route objects, initializes instance variables
+     * Initializes instance variables.
      * 
-     * @param the two locations, their x and y coordinates, and a requirements arraylist of strings representing
-     * the cards needed to claim the route.
+     * @param loc1 The first location.
+     * @param loc2 The second location.
+     * @param requirement The card's color and number.
      */
     public Route(Location loc1, Location loc2, String requirement){
         this.loc1 = loc1;
@@ -31,35 +33,64 @@ public class Route
         this.requirement = requirement;
 
     }
-    
 
     /**
-     * Returns the requirements ArrayList for this route
+     * Returns the requirements for this route.
      * 
-     * @return String representing the requirements
-     * Strings have the format "color number" such as "pink 4" if four pink cards are needed
+     * @return String representing the requirements.
+     * 
      */
     public String getRequirement(){
         return requirement;
     }
-    
+
+    /**
+     * Returns the string requirement of the route.
+     * 
+     * @return String representing the requirements
+     * 
+     */
     public String toString(){
-        String result = loc1.getName() + " to " + loc2.getName() + " for " + requirement;
+        String result = loc1.getName() + " to "
+        + loc2.getName() + " for " + requirement;
         return result;
     }
+
+    /**
+     * Returns the string of the first location.
+     * 
+     * @return String representing the location
+     * 
+     */
     public Location getLoc1(){
         return loc1;
     }
 
+    /**
+     * Returns the string of the second location.
+     * 
+     * @return String representing the location
+     * 
+     */
     public Location getLoc2(){
         return loc2;
     }
 
+    /**
+     * Gets the rquired taxis
+     * 
+     * @return The required taxis to claim a route
+     */
     public int getRecTaxis(){
         String[] recs = requirement.split(" ");
         return Integer.parseInt(recs[1]);
 
     }
+    /**
+     * Gets the color of a route
+     * 
+     * @return Returns the color of a route
+     */
     public String getRouteColor(){
         String[] recs = requirement.split(" ");
         return recs[0];
