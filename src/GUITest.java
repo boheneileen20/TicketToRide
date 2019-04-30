@@ -426,7 +426,7 @@ public class GUITest extends JPanel implements MouseListener {
                 String colorChoice = JOptionPane.showInputDialog(
                         frame, "Do you want the " + option1.getRouteColor() +
                         " route, " + "or the " + option2.getRouteColor() 
-                        + "route?");
+                        + " route?");
                 if(colorChoice.equalsIgnoreCase(option1.getRouteColor())){
                     validColor = true;
                     return option1;
