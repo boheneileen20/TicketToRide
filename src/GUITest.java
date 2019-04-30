@@ -72,6 +72,10 @@ public class GUITest extends JPanel implements MouseListener {
      * true if the current player's turn is over
      */    
     boolean turnOver;
+    /**
+     * true if the game is about to end
+     */ 
+    boolean endGame = false;
 
     /**
      * Begins interaction with user by, asking for number of players, 
@@ -87,6 +91,7 @@ public class GUITest extends JPanel implements MouseListener {
 
         //       ask user to enter the number of players
         boolean validPlayer = false;
+        
         int numPlayers = 0;
         //loop until valid num of players is given
         while (!validPlayer) {
@@ -200,11 +205,13 @@ public class GUITest extends JPanel implements MouseListener {
      * to the frame.
      * */
     public void createAndShowGUI() {
+        if (!endGame){
         for (Player p: driver.getPlayers()) {
             if (p.getTaxis() < 3) {
                 endGame();
             }
         }
+    }
         //  background panel
         JPanel panel = new JPanel();
         panel.setBackground(Color.white);
@@ -231,7 +238,9 @@ public class GUITest extends JPanel implements MouseListener {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
+                    if (!endGame) {
                     completeTurn();
+                }
                 }
             });
 
@@ -258,10 +267,11 @@ public class GUITest extends JPanel implements MouseListener {
      * Goes through final turns, calculates scores, see who won
      */
     public void endGame() {
+        endGame = true;
         JOptionPane.showMessageDialog(frame,"Everyone has one turn left!");
         driver.nextPlayersTurn();
         for (int i = driver.getPlayerTurn(); i < driver.getPlayers().size()
-        ; i --) {
+        ; i ++) {
             completeTurn();
             driver.nextPlayersTurn();
         }
@@ -382,7 +392,7 @@ public class GUITest extends JPanel implements MouseListener {
         //  revalidates the panels (I'm not sure if this is necessary)
         frame.validate();
 
-        createAndShowGUI();
+        if (!endGame) createAndShowGUI();
     }
 
     /**
@@ -1551,7 +1561,8 @@ public class GUITest extends JPanel implements MouseListener {
             });
 
         //  label for tourist attractions
-        JLabel touristLabel = new JLabel("Tourist Attractions: ");
+        JLabel touristLabel = new JLabel("Tourist Attractions: "
+        +driver.getPlayers().get(driver.getPlayerTurn()).getTourScore());
         touristLabel.setFont(new Font("Calibri", 1, 15));
         scorePanel.add(touristLabel);
         scorePanel.setBorder(new LineBorder(Color.BLACK));
