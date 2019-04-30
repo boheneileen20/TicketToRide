@@ -500,7 +500,7 @@ public class GUITest extends JPanel implements MouseListener {
 
         //  text fields for each color card
         JTextField blueNum = new JTextField("0", 5);
-        JTextField grayNum = new JTextField("0",5);
+        JTextField blackNum = new JTextField("0",5);
         JTextField greenNum = new JTextField("0",5);
         JTextField orangeNum = new JTextField("0",5);
         JTextField pinkNum = new JTextField("0",5);
@@ -514,8 +514,8 @@ public class GUITest extends JPanel implements MouseListener {
         enterPayment.add(new Label("blue:"));
         enterPayment.add(blueNum);
 
-        enterPayment.add(new Label("gray:"));
-        enterPayment.add(grayNum);
+        enterPayment.add(new Label("black:"));
+        enterPayment.add(blackNum);
 
         enterPayment.add(new Label("green:"));
         enterPayment.add(greenNum);
@@ -533,7 +533,7 @@ public class GUITest extends JPanel implements MouseListener {
 
         boolean validPayment = false;
         int blue = 0;
-        int gray = 0;
+        int black = 0;
         int green = 0;
         int orange = 0;
         int pink = 0;
@@ -547,7 +547,7 @@ public class GUITest extends JPanel implements MouseListener {
             //  get each of the numbers entered
             try {
                 blue = Integer.parseInt(blueNum.getText());
-                gray = Integer.parseInt(grayNum.getText());
+                black = Integer.parseInt(blackNum.getText());
                 green = Integer.parseInt(greenNum.getText());
                 orange = Integer.parseInt(orangeNum.getText());
                 pink = Integer.parseInt(pinkNum.getText());
@@ -566,7 +566,7 @@ public class GUITest extends JPanel implements MouseListener {
         //  to the next player
         //  I got this working for 2 players but I need to figure out a good
         //  way to do it for more than 2
-        if(!canPay(desired, blue, gray, green, orange, pink, red, rainbow)){
+        if(!canPay(desired, blue, black, green, orange, pink, red, rainbow)){
             JOptionPane.showMessageDialog(frame, "Transaction denied.");
 
             return false;
@@ -575,7 +575,7 @@ public class GUITest extends JPanel implements MouseListener {
         //  since the user can pay, complete transaction
         else {
             //  remove offered cards from player's hand
-            takePayment(p, blue, gray, green, orange, pink, red, rainbow);
+            takePayment(p, blue, black, green, orange, pink, red, rainbow);
             //  remove necessary number of taxis
             p.deductTaxis(desired.getRecTaxis());
             //  adds route to player's possession
@@ -629,24 +629,24 @@ public class GUITest extends JPanel implements MouseListener {
      *
      * @param p Player to remove from
      * @param blue Payment for blue card
-     * @param gray Payment for gray card
+     * @param black Payment for black card
      * @param green Payment for green card
      * @param orange Payment for orange card
      * @param pink Payment for pink card
      * @param red Payment for red card
      * @param rainbow Payment for rainbow card
      * */
-    public void takePayment(Player p, int blue, int gray, int green, 
+    public void takePayment(Player p, int blue, int black, int green, 
     int orange, int pink, int red, int rainbow) {
         for (int i = 0; i < blue; i++) {
             p.removeFromTransHand("blue");
             //  add this card back to the trans deck		
-            TransportationCard t = new  TransportationCard("GRAY"
-                , toolkit.getImage("src/fwdpieces/gray_1.jpg"));		
+            TransportationCard t = new  TransportationCard("black"
+                , toolkit.getImage("src/fwdpieces/black_1.jpg"));		
             driver.addToTransDeck(t);
         }
-        for (int i = 0; i < gray; i++) {
-            p.removeFromTransHand("gray");
+        for (int i = 0; i < black; i++) {
+            p.removeFromTransHand("black");
             //  add this card back to the trans deck		
             TransportationCard t = new  TransportationCard("BLUE"
                 , toolkit.getImage("src/fwdpieces/blue_1.jpg"));		
@@ -696,7 +696,7 @@ public class GUITest extends JPanel implements MouseListener {
      *
      * @param r The Route they'd like to claim
      * @param blue Payment for blue card
-     * @param gray Payment for gray card
+     * @param black Payment for black card
      * @param green Payment for green card
      * @param orange Payment for orange card
      * @param pink Payment for pink card
@@ -705,7 +705,7 @@ public class GUITest extends JPanel implements MouseListener {
      * 
      * @return   true if the user's card offer can be used to pay for the route.
      * */
-    public boolean canPay(Route r, int blue, int gray, int green, 
+    public boolean canPay(Route r, int blue, int black, int green, 
     int orange, int pink, int red, int rainbow) {
         //  gets the requirement string from the Route object
         String[] recs = r.getRequirement().split(" ");
@@ -714,7 +714,7 @@ public class GUITest extends JPanel implements MouseListener {
         //  parses out the number of taxis needed to claim the route
         int num = Integer.parseInt(recs[1]);
         //  totals the number of cards the player has offered
-        int totalOffered = blue + gray + green + orange + pink + red + rainbow;
+        int totalOffered = blue + black + green + orange + pink + red + rainbow;
 
         //  if user offered too many or too few cards, deny transaction
         if (totalOffered != num) {
@@ -729,9 +729,9 @@ public class GUITest extends JPanel implements MouseListener {
                     return true;
                 }
             }
-            //if it's gray
-            else if (color.equalsIgnoreCase("gray")) {
-                if (gray + rainbow == num) {
+            //if it's black
+            else if (color.equalsIgnoreCase("black")) {
+                if (black + rainbow == num) {
                     return true;
                 }
             } else if (color.equalsIgnoreCase("green")) {
@@ -756,7 +756,7 @@ public class GUITest extends JPanel implements MouseListener {
             else if (color.equalsIgnoreCase("white")) {
                 if (blue + rainbow == num) {
                     return true;
-                } else if (gray + rainbow == num) {
+                } else if (black + rainbow == num) {
                     return true;
                 } else if (green + rainbow == num) {
                     return true;
@@ -1530,14 +1530,14 @@ public class GUITest extends JPanel implements MouseListener {
         blueLabel.setFont(new Font("Calibri", 1, 15));
 
         //  label with ImageIcon for card
-        Image gray = driver.getUprightTrans().get(1).getPicture();
-        gray = gray.getScaledInstance(100, 100, 0);
-        JLabel grayPile = new JLabel(new ImageIcon(gray));
+        Image black = driver.getUprightTrans().get(1).getPicture();
+        black = black.getScaledInstance(100, 100, 0);
+        JLabel blackPile = new JLabel(new ImageIcon(black));
 
-        //label for num gray cards
-        JLabel grayLabel = new JLabel("Grays: " + driver.getPlayers().
-                get(driver.getPlayerTurn()).getNumColor("gray"));
-        grayLabel.setFont(new Font("Calibri", 1, 15));
+        //label for num black cards
+        JLabel blackLabel = new JLabel("blacks: " + driver.getPlayers().
+                get(driver.getPlayerTurn()).getNumColor("black"));
+        blackLabel.setFont(new Font("Calibri", 1, 15));
 
         //  label with ImageIcon for card
         Image green = driver.getUprightTrans().get(2).getPicture();
@@ -1674,9 +1674,9 @@ public class GUITest extends JPanel implements MouseListener {
         transCardHandPanel.add(bluePile);
         transCardHandPanel.add(blankLabel);
         transCardHandPanel.add(blueLabel);
-        transCardHandPanel.add(grayPile);
+        transCardHandPanel.add(blackPile);
         transCardHandPanel.add(greenPile);
-        transCardHandPanel.add(grayLabel);
+        transCardHandPanel.add(blackLabel);
         transCardHandPanel.add(greenLabel);
         transCardHandPanel.add(orangePile);
         transCardHandPanel.add(pinkPile);
@@ -1706,7 +1706,7 @@ public class GUITest extends JPanel implements MouseListener {
         //  background panel
         JPanel p = new JPanel();
         p.setSize(new Dimension(600, 600));
-        p.setBackground(Color.GRAY);
+        p.setBackground(Color.black);
         //  panel that contains JLabel with image
         JPanel panel = new JPanel();
         panel.setBorder(new LineBorder(Color.BLACK)); // make it easy to see
