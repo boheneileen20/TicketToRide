@@ -640,24 +640,45 @@ public class GUITest extends JPanel implements MouseListener {
     int orange, int pink, int red, int rainbow) {
         for (int i = 0; i < blue; i++) {
             p.removeFromTransHand("blue");
+            //  add this card back to the trans deck
+            TransportationCard t = new  TransportationCard("GRAY", toolkit.getImage("src/fwdpieces/gray_1.jpg"));
+            driver.addToTransDeck(t);
         }
         for (int i = 0; i < gray; i++) {
             p.removeFromTransHand("gray");
+            //  add this card back to the trans deck
+            TransportationCard t = new  TransportationCard("BLUE", toolkit.getImage("src/fwdpieces/blue_1.jpg"));
+            driver.addToTransDeck(t);
         }
         for (int i = 0; i < green; i++) {
             p.removeFromTransHand("green");
+            //  add this card back to the trans deck
+            TransportationCard t = new  TransportationCard("GREEN", toolkit.getImage("src/fwdpieces/green_1.jpg"));
+            driver.addToTransDeck(t);
         }
         for (int i = 0; i < orange; i++) {
             p.removeFromTransHand("orange");
+            //  add this card back to the trans deck
+            TransportationCard t = new  TransportationCard("ORANGE", toolkit.getImage("src/fwdpieces/orange_1.jpg"));
+            driver.addToTransDeck(t);
         }
         for (int i = 0; i < pink; i++) {
             p.removeFromTransHand("pink");
+            //  add this card back to the trans deck
+            TransportationCard t = new  TransportationCard("PINK", toolkit.getImage("src/fwdpieces/pink_1.jpg"));
+            driver.addToTransDeck(t);
         }
         for (int i = 0; i < red; i++) {
             p.removeFromTransHand("red");
+            //  add this card back to the trans deck
+            TransportationCard t = new  TransportationCard("RED", toolkit.getImage("src/fwdpieces/red_1.jpg"));
+            driver.addToTransDeck(t);
         }
         for (int i = 0; i < rainbow; i++) {
             p.removeFromTransHand("rainbow");
+            //  add this card back to the trans deck
+            TransportationCard t = new  TransportationCard("RAINBOW", toolkit.getImage("src/fwdpieces/rainbow_1.jpg"));
+            driver.addToTransDeck(t);
         }
 
     }

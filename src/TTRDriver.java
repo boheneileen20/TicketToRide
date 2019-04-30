@@ -589,6 +589,15 @@ public class TTRDriver {
         }
     }
 
+    /*
+    * Adds a transportation card to the transportation deck
+    *
+    * @param    TransportationCard to add
+    * */
+    public void addToTransDeck(TransportationCard t){
+        transCards.add(t);
+    }
+
     /**
      * Replaces one of the face up cards with the top card 
      * in the face down pile
