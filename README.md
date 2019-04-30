@@ -6,7 +6,7 @@ connect routes using taxis, connecting 2 destinations from
 destination cards, or connecting tourist attractions.
 
 Directions:</br>
-1)Run the main method of the GUI.java  in BlueJ. <br/>
+1)Run the main method of the GUITest.java  in BlueJ. <br/>
 2)Type the amount of players in the game(1-5).<br/>
 3)For each player, enter their name and age.<br/>
 4)Then the game will show the destination cards the user drew. Type "1", "2", or "Both" <br/>
