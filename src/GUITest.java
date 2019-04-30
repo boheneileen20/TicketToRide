@@ -94,7 +94,7 @@ public class GUITest extends JPanel implements MouseListener {
                 //if valid number is given, end loop, otherwise, repeat
                 numPlayers = Integer.parseInt(
                     JOptionPane.showInputDialog("How many players?"));
-                if (numPlayers > 1 && numPlayers <= 5) {
+                if (numPlayers > 1 && numPlayers <= 4) {
                     validPlayer = true;
                 } else {
                     JOptionPane error = new JOptionPane("Error");
