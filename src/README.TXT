@@ -2,7 +2,7 @@ Ticket To Ride New York!
 Description: Ticket to Ride is a game where the player with the most points wins the game. To get points the player has to connect routes using taxis, connecting 2 destinations from destination cards, or connecting tourist attractions.
 
 Directions:
-1)Run the main method of the GUI.java in BlueJ. 
+1)Run the main method of the GUITest.java in BlueJ. 
 2)Type the amount of players in the game(1-5).
 3)For each player, enter their name and age.
 4)Then the game will show the destination cards the user drew. Type "1", "2", or "Both" 
