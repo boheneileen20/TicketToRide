@@ -845,6 +845,12 @@ public class GUITest extends JPanel implements MouseListener {
 
         //  if the user wants a blind draw
         if(tCardChoice.equals("blind")){
+            //if there are no more face down trans cards left, return false
+            if(driver.getTransDeck().size() == 0){
+                JOptionPane.showMessageDialog(frame, "There are no face down cards left! Try something else.");
+                return false;
+            }
+
             //  gets transportation from top of deck in driver
             TransportationCard t = driver.getTransDeck().get(0);
             //  tells the user what they drew
@@ -1017,17 +1023,109 @@ public class GUITest extends JPanel implements MouseListener {
 
         //  process for blind card (could be put in it's own method)
         if(tCardChoice.equals("blind")){
-            TransportationCard t;
-            try {
-                t = driver.getTransDeck().get(0);
+            //if there are no more face down trans cards left, return false
+            if(driver.getTransDeck().size() == 0){
+                JOptionPane.showMessageDialog(frame, "There are no face down cards left! Take a face up card instead.");
+                //loops until 1, 2, 3, 4, 5 is given
+                int faceChoice = 0;
+                validChoice = false;
+                while (!validChoice) {
+                    try {
+                        faceChoice = Integer.parseInt(JOptionPane.showInputDialog(frame, "Enter 1,2,3,4, or 5 to draw that face up card."));
+                        if (faceChoice >= 1 && faceChoice <= 5) {
+                            validChoice = true;
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(null, "Enter a valid choice");
+                        }
+                    }
+                    catch (NumberFormatException e) {
+                        JOptionPane.showMessageDialog(null, "Error: Enter a number");
+                        //return false;
+                    }
+                }
+                //add choice to player hand and remove from display, replacing with top card on deck
+                TransportationCard t = driver.getDisplayTransCards().get(faceChoice-1);
+                driver.getPlayers().get(driver.getPlayerTurn()).addToTransHand(t);
+
+                //replace taken card with top card in deck, remove top card from deck
+                driver.setDisplayTransCards(faceChoice-1, driver.getTransDeck().get(0));
+                driver.removeFromTransDeck(0);
+
+                //check that five cards don't contain more than 3 rainbow cards
+                while(!driver.validVisibleTrans()){
+                    driver.pickDisplayTransCards();
+                }
+
+                //if player chose a taxi, return
+                /*
+                 * NEEDS FIXING: (i think) so that the player can choose again if they pick rainbow on the second draw
+                 * */
+                if(t.getColor().equals("RAINBOW")){
+
+                    //background panel
+                    JPanel panel2 = new JPanel();
+                    panel2.setBackground(Color.white);
+                    panel2.setPreferredSize(new Dimension(1000, 800));
+                    panel2.setLayout(new BorderLayout());
+
+                    //center board panel
+                    game = boardPanel();
+                    //left side panel
+                    left = leftPanel();
+
+                    //top panel
+                    top = topPanel();
+                    //bottom panel
+                    bottom = bottomPanel();
+                    //right panel
+                    right = rightPanel();
+
+                    panel2.add(game, BorderLayout.CENTER);
+                    panel2.add(right, BorderLayout.EAST);
+                    panel2.add(bottom, BorderLayout.SOUTH);
+                    panel2.add(top, BorderLayout.NORTH);
+                    panel2.add(left, BorderLayout.WEST);
+
+                    frame.getContentPane().add(panel2);
+                    frame.validate();
+                    //createAndShowGUI();
+                }
+
+                //repaint everything
+                //background panel
+                JPanel panel2 = new JPanel();
+                panel2.setBackground(Color.white);
+                panel2.setPreferredSize(new Dimension(1000, 800));
+                panel2.setLayout(new BorderLayout());
+
+                //center board panel
+                game = boardPanel();
+                //left side panel
+                left = leftPanel();
+
+                //top panel
+                top = topPanel();
+                //bottom panel
+                bottom = bottomPanel();
+                //right panel
+                right = rightPanel();
+
+                panel2.add(game, BorderLayout.CENTER);
+                panel2.add(right, BorderLayout.EAST);
+                panel2.add(bottom, BorderLayout.SOUTH);
+                panel2.add(top, BorderLayout.NORTH);
+                panel2.add(left, BorderLayout.WEST);
+
+                frame.getContentPane().add(panel2);
+                frame.validate();
+                //createAndShowGUI();
+                return true;
             }
-            catch (IndexOutOfBoundsException i) {
-                JOptionPane.showMessageDialog(null, 
-                    "Error: Can't pick more cards");
-                return false;
-            }
-            JOptionPane.showMessageDialog(frame, "You have drawn a " +
-                t.getColor() + " card. Your turn is now over.");
+
+            TransportationCard t = driver.getTransDeck().get(0);
+            JOptionPane.showMessageDialog(frame, "You have drawn a " + t.getColor() + " card. Your turn is now over.");
+
             driver.getPlayers().get(driver.getPlayerTurn()).addToTransHand(t);
             driver.removeFromTransDeck(0);
 
@@ -1063,6 +1161,7 @@ public class GUITest extends JPanel implements MouseListener {
 
         //   second face draw
         else if(tCardChoice.equals("face")){
+
             //loops until 1, 2, 3, 4, 5 is given
             int faceChoice = 0;
             validChoice = false;
@@ -1166,6 +1265,7 @@ public class GUITest extends JPanel implements MouseListener {
             frame.getContentPane().add(panel2);
             frame.validate();
             //createAndShowGUI();
+            return true;
         }
         return true;
     }
